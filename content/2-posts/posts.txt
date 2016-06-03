@@ -2,7 +2,4 @@ title: Blog Posts
 
 ----
 
-text: Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the \
-qualities of a globe
-
-more stuff
+text: List of blog posts here

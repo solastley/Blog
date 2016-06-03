@@ -393,3 +393,15 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #0085a1;
 }
+.blog-post-title {
+    padding-bottom: 3rem;
+}
+#disqus_thread {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 90% !important;
+}
+
+.blog-post h3 {
+    padding-top: 2rem;
+}

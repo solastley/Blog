@@ -10,8 +10,8 @@
 
   <title><?php echo $site->title()->html() ?> | <?php echo $page->title()->html() ?></title>
 
-  <?php echo css('assets/css/bootstrap.min.css') ?>
-  <?php echo css('assets/css/clean-blog.min.css') ?>
+  <?php echo css('/assets/css/bootstrap.min.css') ?>
+  <?php echo css('/assets/css/clean-blog.css') ?>
 
   <!-- Custom Fonts -->
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -39,13 +39,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="<?= page('home')->url() ?>">Home</a>
                     </li>
                     <li>
                         <a href="about.html">About</a>
                     </li>
                     <li>
-                        <a href="post.html">Sample Post</a>
+                        <a href="<?= page('posts')->url() ?>">Blog Posts</a>
                     </li>
                     <li>
                         <a href="contact.html">Contact</a>
@@ -59,14 +59,14 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('assets/images/home-bg2.jpg')">
+    <header class="intro-header" style="background-image: url('/assets/images/home-bg2.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
                         <h1>BLOG</h1>
                         <hr class="small">
-                        <span class="subheading">A collection of my thoughts and projects</span>
+                        <span class="subheading">Projects, Tutorials, Thoughts</span>
                     </div>
                 </div>
             </div>

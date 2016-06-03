@@ -1,0 +1,21 @@
+Title: Blog Post Template
+
+----
+
+Text: Put Blog Post Text Here
+
+----
+
+Date: 2016-06-03
+
+----
+
+Author: Solomon Astley
+
+----
+
+Tags:
+
+----
+
+summary: A quick and dirty guide to creating a personal blog with Kirby CMS

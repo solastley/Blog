@@ -1,0 +1,79 @@
+Title: Building a Blog With Kirby CMS
+
+----
+
+Date: 2016-06-03
+
+----
+
+Author: Solomon Astley
+
+----
+
+Tags: 
+
+----
+
+Text: 
+
+##Introduction
+I'm writing a blog post for my Kirby CMS blog about how to make a Kirby CMS blog. Pretty meta, I know. So here's the thing about Kirby - it's a great database-less CMS that's super easy to use once you're all set up and you know what you're doing, but the documentation kind of sucks. Without a friend to help you out, it can take a while to get everything working and understand a lot of the cool features of Kirby. Most likely, a lot of your time will be spent aimlessly searching the darkest corners of Google while cursing the developers under your breath. Well lucky for you, I already went through all of that so that you all don't have to.
+
+##The Structure of Our Site
+Kirby is a file-based content management system. In other words, instead of loading all of your stuff from a database, you have a folder for every possible web page in your application. In the case of a blog, that means that you have a folder for every single blog post. Each folder contains a text file in which you can define variables which can then be used in the associated template for that file. The template contains "kirbytext", which is a markdown unique to Kirby CMS that uses PHP to render it. It's an extension of the popular markdown developed by John Gruber.
+
+For simplicity, I will only be covering how to make a home page and several sub-pages for blog posts. When you make your own blog, feel free to include other useful pages like an about page, a contact page, etc.
+
+##Getting Started
+###Downloading and Installing
+First let's download Kirby. You can get Kirby easily by cloning the following Git repository:
+```
+$ git clone --recursive https://github.com/getkirby/starterkit.git
+```
+Move the files into your project directory. These files include a simple Kirby website to help you get started with learning how everything works. Once we get our server set up we should be able to see the site.
+
+Kirby requires PHP to render its templates, so you'll need to make sure to download the latest version. I am using a Linux machine for my development, so I'll only be covering how to do the installation with Linux. In addition to PHP, you should install Apache2 if you haven't already. Luckily for us Linux users, this can be done from the command line easily. To install Apache2 and Linux (and MySql at the same time, conveniently), open up a terminal and run the following commands:
+```
+$ sudo apt-get  update
+$ sudo apt-get install lamp-server^
+``` 
+
+###Configuring Your Server
+Now, there are a couple of things you'll want to change in your Apache2 configuration files to get your server up and running and so that you can use Kirby correctly. Firstly, navigate into the proper directory to find the configuration files. By default, Apache2 installs in /etc/apache2/ on Ubuntu 16.04, and likely on other Linux distros as well. cd into this directory and you'll find a file called "apache2.conf". Go ahead and open that puppy up in your favorite text editor (remember to open it as root or you won't actually be able to edit it since we did a sudo apt-get earlier), and scroll down a while until you reach a block of code that looks something like this:
+```
+<Directory ></Directory>
+	Options FollowSymLinks
+	AllowOverride none
+	Require all denied
+</Directory>
+```
+It should be located at around line 153 of the file. Directly beneath that block of code, paste the following code into your file:
+```
+<Directory /path/to/your/project/directory></Directory>
+	Options FollowSymLinks Indexes
+	AllowOverride all
+	Require all granted
+</Directory>
+```
+Now replace "/path/to/your/project/directory/" with the actual path to your project directory. I won't go into detail about what these changes have done, but they are necessary for Kirby to work properly. Next, we need to make a change in another file to point our server at our project directory. Inside the same folder as your apache2.config file, you will find a directory called "sites-available". cd into this directory and open the file called "000-default.conf". Paste the following block of code at the bottom of your file:
+```
+<VirtualHost *:80>
+  ServerAlias blog.*
+  ServerName blog.localhost
+  DocumentRoot /path/to/your/project/directory
+  DirectoryIndex index.php
+</VirtualHost>
+```
+Again, edit this code so it contains the real path to your project directory. This block of code points the apache server at your code so that it may access it anytime you ask it to. The last thing we need to do is simple. In order for Kirby to work properly, an apache2 property called mod_rewrite must be enabled. In order to enable mod_rewrite, all you need to do is run the following commands in your terminal:
+```
+$ a2enmod rewrite
+$ sudo service apache2 restart
+```
+And there you have it! If you did everything successfully, you should now be able to view the simple Kirby website that came with the starter kit you downloaded earlier by navigating to http://blog.localhost in your browser. Awesome!
+
+##Making a Home Page
+Our home page will be the first thing that our visitors see when they visit our blog, so we should make it pretty and simple. We'll give it a nice navigation bar, a hero-banner, and a couple of links that point to some featured blog posts that we want to show off.
+
+----
+
+Summary: A quick and dirty guide to creating a personal blog with Kirby CMS

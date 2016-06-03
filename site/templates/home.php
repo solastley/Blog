@@ -5,15 +5,16 @@
       <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
               <div class="post-preview">
-                  <a href="/posts">
+                  <a href="posts/<?php echo $page->featured_article_1_url() ?>">
                       <h2 class="post-title">
-                          Man must explore, and this is exploration at its greatest
+                          <?php echo page('posts/' . $page->featured_article_1_url())->title() ?>
                       </h2>
                       <h3 class="post-subtitle">
-                          Problems look mighty small from 150 miles up
+                          <?php echo page('posts/' . $page->featured_article_1_url())->summary() ?>
                       </h3>
                   </a>
-                  <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
+                  <p class="post-meta">Posted by <?= page('posts/' . $page->featured_article_1_url())->author() ?> on
+                      <?= page('posts/' . $page->featured_article_1_url())->date('m/d/Y, h:i a') ?></p>
               </div>
               <hr>
               <div class="post-preview">
