@@ -1,59 +1,45 @@
+<?php
+
+    /* An array that contains the name of each featured article, as defined in
+    the markdown for the home page */
+    $articles = [];
+    array_push($articles, $page->featured_article_1_url());
+    array_push($articles, $page->featured_article_2_url());
+    array_push($articles, $page->featured_article_3_url());
+    array_push($articles, $page->featured_article_4_url());
+
+?>
+
+<!-- Snippet for HTML head and navbar -->
 <?php snippet('header') ?>
+
+<!-- Snippet for hero banner -->
+<?php snippet('banner',
+    array('title' => 'BLOG', 'subtitle' => 'Projects, Tutorials, Thoughts')); ?>
 
 <!-- Main Content -->
   <div class="container">
       <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <?php foreach($articles as $article): ?>
               <div class="post-preview">
-                  <a href="posts/<?php echo $page->featured_article_1_url() ?>">
+                  <a href="posts/<?php echo $article ?>">
                       <h2 class="post-title">
-                          <?php echo page('posts/' . $page->featured_article_1_url())->title() ?>
+                          <?php echo page('posts/' . $article)->title() ?>
                       </h2>
                       <h3 class="post-subtitle">
-                          <?php echo page('posts/' . $page->featured_article_1_url())->summary() ?>
+                          <?php echo page('posts/' . $article)->summary() ?>
                       </h3>
                   </a>
-                  <p class="post-meta">Posted by <?= page('posts/' . $page->featured_article_1_url())->author() ?> on
-                      <?= page('posts/' . $page->featured_article_1_url())->date('m/d/Y, h:i a') ?></p>
+                  <p class="post-meta">Posted by <?= page('posts/' . $article)->author() ?> on
+                      <?php echo page('posts/' . $article)->date('m/d/Y, h:i a') ?></p>
               </div>
               <hr>
-              <div class="post-preview">
-                  <a href="post.html">
-                      <h2 class="post-title">
-                          I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
-                      </h2>
-                  </a>
-                  <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 18, 2014</p>
-              </div>
-              <hr>
-              <div class="post-preview">
-                  <a href="post.html">
-                      <h2 class="post-title">
-                          Science has not yet mastered prophecy
-                      </h2>
-                      <h3 class="post-subtitle">
-                          We predict too much for the next year and yet far too little for the next ten.
-                      </h3>
-                  </a>
-                  <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</p>
-              </div>
-              <hr>
-              <div class="post-preview">
-                  <a href="post.html">
-                      <h2 class="post-title">
-                          Failure is not an option
-                      </h2>
-                      <h3 class="post-subtitle">
-                          Many say exploration is part of our destiny, but it’s actually our duty to future generations.
-                      </h3>
-                  </a>
-                  <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on July 8, 2014</p>
-              </div>
-              <hr>
+          <?php endforeach; ?>
               <!-- Pager -->
               <ul class="pager">
                   <li class="next">
-                      <a href="#">Older Posts &rarr;</a>
+                      <a href="<?= page('posts')->url() ?>">Blog Posts</a>
                   </li>
               </ul>
           </div>
@@ -62,4 +48,5 @@
 
   <hr>
 
+<!-- Snippet for footer -->
 <?php snippet('footer') ?>

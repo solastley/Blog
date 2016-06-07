@@ -8,5 +8,7 @@ language: en
 role: admin
 history:
   - posts/kirby-blog
+  - posts/fake-post-3
+  - posts/fake-post-2
+  - posts/fake-post-1
   - home
-  - posts/post-template

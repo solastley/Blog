@@ -14,10 +14,10 @@
   <?php echo css('/assets/css/clean-blog.css') ?>
 
   <!-- Custom Fonts -->
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!--<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
+-->
 </head>
 <body>
 
@@ -42,13 +42,13 @@
                         <a href="<?= page('home')->url() ?>">Home</a>
                     </li>
                     <li>
-                        <a href="about.html">About</a>
+                        <a href="<?= page('about')->url() ?>">About</a>
                     </li>
                     <li>
                         <a href="<?= page('posts')->url() ?>">Blog Posts</a>
                     </li>
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="<?= page('contact')->url() ?>">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -56,19 +56,3 @@
         </div>
         <!-- /.container -->
     </nav>
-
-    <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('/assets/images/home-bg2.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>BLOG</h1>
-                        <hr class="small">
-                        <span class="subheading">Projects, Tutorials, Thoughts</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>

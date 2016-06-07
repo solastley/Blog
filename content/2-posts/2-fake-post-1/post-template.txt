@@ -1,0 +1,21 @@
+Title: Fake Post 1
+
+----
+
+Date: 2016-06-05
+
+----
+
+Author: Solomon Astley
+
+----
+
+Tags: 
+
+----
+
+Summary: This is the first fake blog post for testing out my PHP code. Cool!
+
+----
+
+Text: I wonder if this will work.

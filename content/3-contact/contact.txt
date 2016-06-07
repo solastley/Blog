@@ -1,0 +1,17 @@
+title: Contact
+
+----
+
+name: Solomon Astley
+
+----
+
+email: solastley@gmail.com
+
+----
+
+phone-number: 724-205-9954
+
+----
+
+website: http://www.solomonastley.com

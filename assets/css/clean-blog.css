@@ -405,3 +405,8 @@ body {
 .blog-post h3 {
     padding-top: 2rem;
 }
+
+.skills {
+    display: inline-block;
+    margin-left: 2rem;
+}
