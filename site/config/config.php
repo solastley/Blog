@@ -47,6 +47,7 @@ function UpdateRepo(){
     error_log(shell_exec("pwd"));
     shell_exec("git config user.email 'solastley@gmail.com'");
     shell_exec("git config user.name 'Solomon Astley'");
+    shell_exec("git config push.default simple");
     $result1 = shell_exec("git add -A");
     $result2 = shell_exec("git commit -m 'automatic commit from updated panel'");
     $result3 = shell_exec("git push");
