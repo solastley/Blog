@@ -38,7 +38,7 @@ Kirby requires PHP to render its templates, so you'll need to make sure to downl
 ```
 $ sudo apt-get  update
 $ sudo apt-get install lamp-server^
-``` 
+```
 
 ###Configuring Your Server
 Now, there are a couple of things you'll want to change in your Apache2 configuration files to get your server up and running and so that you can use Kirby correctly. Firstly, navigate into the proper directory to find the configuration files. By default, Apache2 installs in /etc/apache2/ on Ubuntu 16.04, and likely on other Linux distros as well. cd into this directory and you'll find a file called "apache2.conf". Go ahead and open that puppy up in your favorite text editor (remember to open it as root or you won't actually be able to edit it since we did a sudo apt-get earlier), and scroll down a while until you reach a block of code that looks something like this:
@@ -549,4 +549,4 @@ The next step is to deploy your blog to a virtual server, like an AWS EC2 instan
 
 ----
 
-Summary: In this guide I explain how to create a personal blog from scratch using Kirby CMS and PhP
+Summary: In this guide I explain how to create a personal blog from scratch using Kirby CMs and PhP

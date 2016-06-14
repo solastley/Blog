@@ -50,6 +50,7 @@ function UpdateRepo(){
     shell_exec("git config push.default simple");
     $result1 = shell_exec("git add -A");
     $result2 = shell_exec("git commit -m 'automatic commit from updated panel'");
+    $result4 = shell_exec("git pull");
     $result3 = shell_exec("git push");
 
     if ($result1 !== null) {
@@ -64,7 +65,8 @@ function UpdateRepo(){
     site()->update(array(
         'message1' => $result1,
         'message2' => $result2,
-        'message3' => $result3
+        'message3' => $result3,
+        'message4' => $result4
     ));
 }
 
