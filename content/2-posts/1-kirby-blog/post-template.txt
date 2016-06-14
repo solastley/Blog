@@ -549,4 +549,4 @@ The next step is to deploy your blog to a virtual server, like an AWS EC2 instan
 
 ----
 
-Summary: In this guide I explain how to create a personal blog from scratch using Kirby CMS and php.
+Summary: In this guide I explain how to create a personal blog from scratch using Kirby CMS and PhP
