@@ -28,3 +28,22 @@ make Kirby work. For more fine-grained configuration
 of the system, please check out http://getkirby.com/docs/advanced/options
 
 */
+
+/* Kirby Hooks to update the git repository automatically */
+// $panel = panel();
+// $kirby = kirby();
+// $site  = site();
+// $user  = site()->user();
+
+kirby()->hook('panel.page.create', function($page) {UpdateRepo();});
+kirby()->hook('panel.page.update', function($page) {UpdateRepo();});
+kirby()->hook('panel.page.delete', function($page) {UpdateRepo();});
+kirby()->hook('panel.page.sort', function($page) {UpdateRepo();});
+kirby()->hook('panel.page.hide', function($page) {UpdateRepo();});
+kirby()->hook('panel.page.move', function($page) {UpdateRepo();});
+
+function UpdateRepo(){
+   error_log("Updating Repo Bingo", 0);
+}
+
+?>
