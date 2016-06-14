@@ -43,7 +43,23 @@ kirby()->hook('panel.page.hide', function($page) {UpdateRepo();});
 kirby()->hook('panel.page.move', function($page) {UpdateRepo();});
 
 function UpdateRepo(){
-   error_log("Updating Repo Bingo", 0);
+    chdir("/home/astley/GitProjects/Blog");
+    error_log(shell_exec("pwd"));
+    shell_exec("git config user.email 'solastley@gmail.com'");
+    shell_exec("git config user.name 'Solomon Astley'");
+    $result1 = shell_exec("git add -A");
+    $result2 = shell_exec("git commit -m 'automatic commit from updated panel'");
+    $result3 = shell_exec("git push");
+
+    if ($result1 !== null) {
+        error_log($result1, 0);
+    }
+    if ($result2 !== null) {
+        error_log($result2, 0);
+    }
+    if ($result3 !== null) {
+        error_log($result3, 0);
+    }
 }
 
 ?>
