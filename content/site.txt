@@ -20,6 +20,5 @@ Copyright: © 2016 Solomon Astley
 
 Message2: 
 
-[master 8115ac0] automatic commit from updated panel
- 5 files changed, 42 insertions(+), 5 deletions(-)
- create mode 100644 content/2-posts/fake/post-template.txt
+[master 70378b8] automatic commit from updated panel
+ 1 file changed, 1 insertion(+), 1 deletion(-)
