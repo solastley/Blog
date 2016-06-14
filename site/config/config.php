@@ -52,13 +52,13 @@ function UpdateRepo(){
     $result3 = shell_exec("git push");
 
     if ($result1 !== null) {
-        error_log($result1, 0);
+        error_log($result1 + '\n\n', 0);
     }
     if ($result2 !== null) {
-        error_log($result2, 0);
+        error_log($result2 + '\n\n', 0);
     }
     if ($result3 !== null) {
-        error_log($result3, 0);
+        error_log($result3 + '\n\n', 0);
     }
 }
 
