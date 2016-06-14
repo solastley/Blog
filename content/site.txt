@@ -18,4 +18,12 @@ Copyright: © 2016 Solomon Astley
 
 ----
 
-Git-Message: Git Message
+message1: Fake Message 1
+
+----
+
+message2: Fake Message 2
+
+----
+
+message3: Fake Message 3

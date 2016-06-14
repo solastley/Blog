@@ -62,7 +62,9 @@ function UpdateRepo(){
         error_log($result3 + '\n\n', 0);
     }
     site()->update(array(
-        'git-message' => $result3
+        'message1' => $result1,
+        'message2' => $result2,
+        'message3' => $result3
     ));
 }
 
