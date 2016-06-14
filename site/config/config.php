@@ -55,10 +55,10 @@ function UpdateRepo(){
         error_log($result1, 0);
     }
     if ($result2 !== null) {
-        //error_log($result2, 0);
+        error_log($result2, 0);
     }
     if ($result3 !== null) {
-        //error_log($result3, 0);
+        error_log($result3, 0);
     }
 }
 
