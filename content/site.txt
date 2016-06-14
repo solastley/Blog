@@ -1,17 +1,17 @@
-Title: Kirby Starterkit
+Title: Blog of Solomon Astley
 
 ----
 
-Author: Bastian Allgeier GmbH
+Author: Solomon Astley
 
 ----
 
-Description: This is Kirby's Starterkit.
+Description: This is the personal blog of Solomon Astley.
 
 ----
 
-Keywords: Kirby, CMS, file-based
+Keywords: Kirby, CMS, blog
 
 ----
 
-Copyright: © 2009-(date: Year) (link: http://getkirby.com text: Kirby)
+Copyright: © 2016 Solomon Astley

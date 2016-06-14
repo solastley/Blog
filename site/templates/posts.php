@@ -21,7 +21,7 @@
                       </h3>
                   </a>
                   <p class="post-meta">Posted by <?= $article->author() ?> on
-                      <?= $article->date('m/d/Y, h:i a') ?></p>
+                      <?= $article->date('m/d/Y') ?></p>
               </div>
               <hr>
           <?php endforeach; ?>

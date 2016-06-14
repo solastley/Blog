@@ -10,7 +10,7 @@ Author: Solomon Astley
 
 ----
 
-Tags: 
+Tags: blog,Kirby CMS,PHP
 
 ----
 
@@ -274,6 +274,8 @@ The "isset()" method, if you're not familiar with it, simply returns a boolean d
 
 When we link to the banner.php snippet in the future, we will be sure to pass it an array of variables which includes the "$title" variable which we use here. If we don't do so, it will default to "BLOG" as per the code above. Moving on down the code, you'll see a great example of how to take advantage of the variables passed to the snippet and the isset() method. In this case, if the $subtitle variable isset(), then we render a horizontal line and the subtitle below our main title on the banner. If the $subtitle variable is not set (this is the case if we neglect to pass it in our array of arguments), then we simply don't render those things.
 
+Note that the banner.php snippet renders an image called "home-bg2.jpg" located in the images folder of the assets directory. You will need to place an image here as well. I recommend googling "Background Images" and selecting one from those results so that it is a high-quality image. Your image should either be named "home-bg2.jpg", or you should edit the snippet code to reflect the actual name of your image file. Either way works.
+
 ##The Kirby Panel
 Alright, we've got all of our snippets made. Those snippets in addition to the blog posts will be the bulk of our site, so let's make a template file for our blog posts so that adding new posts is really easy for us. To do this, we're going to take advantage of one of the COOLEST features of Kirby (in my opinion), the Kirby Panel. The panel can be accessed from our root URL + "panel". So, in our case, we can access it at http://blog.localhost/panel.
 
@@ -489,8 +491,62 @@ Here we're giving the page a title and listing the names of four blog posts that
 <!-- Snippet for footer -->
 <?php snippet('footer') ?>
 ```
-You should understand Kirby well enough by now that you can run through this code and clearly see what's going on here. I've simply defined an array of variables that are the
+You should understand Kirby well enough by now that you can run through this code and clearly see what's going on here. I've simply defined an array of of $page variables so that we can access the featured articles that we defined back in our markdown file. Below that, I execute a foreach() loop to iterate over those variables and render some post-preview divs that contain information about each of those posts, like the title, summary, author, etc. This information is coming from the markdown file for each of the posts, which are located inside the "posts" directory. Now, we haven't created those posts yet, but we'll do that right now.
+
+##Featured Posts
+We're not going to bother making real blog posts for this tutorial. You can handle that part on your own, I'm sure, but for now let's make some fake posts. Now that we have a panel up and running, and a blog post template made, this should be super simple for us. Go ahead and access your panel by navigating to http://blog.localhost/panel. You may be prompted to login at first. If so, just enter the username and password that you created earlier on.
+
+Once inside your panel, click on "Blog Posts" under the "Pages" section on the left-hand side. Now you're inside the "Posts" folder. Once there, again under the "Pages" section, click on the add button. You should be prompted with a dialogue box where you may fill in the title of your new blog post. Enter the title "fake post 1" (be mindful of the lowercase capitalization). Kirby will automatically generate a URL for you when you do this. We need to keep this url for our purposes, but when you make blog posts in the future - feel free to edit it to something more simple than your title.
+
+If you created the post template properly earlier, then Kirby should have also automatically selected the "Blog Post Template" for your page. When you're all done, click on "add" to make the new fake blog post. Once you click add, you'll be able to enter values for the things we added to the post template blueprint earlier (i.e. title, author, date, summary, etc). Fill in these values with some bogus data for now, or we won't be able to properly see the featured articles on the home page. Lastly, under the "Page settings" section, if the "Status" isn't already set to "visible", then set it to be. I'll explain the importance of this later.
+
+For our purposes, we are going to do this a total of four times, and each time we will title our posts to correspond to the featured articles that we defined in the home.txt markdown earlier. We just did "fake article 1", so go ahead and repeat the process for "fake article 2", "fake article 3", and "fake article 4". Once this is completed, you should be able to navigate to your home page at http://blog.localhost and see our featured blog posts appear below your header!
+
+##The Blog Posts Page
+The last thing that we're going to do is create a page that lists all of our blog posts, not just the featured ones. This is the page that is linked to in your nav bar and also below your featured blog posts. Currently, clicking those links will result in a server error. We're going to change that. To do so, make a file in your "templates" folder called "posts.php", and type or copy/paste the following code into the file:
+```
+<?php $articles = page('posts')->children()->visible(); ?>
+
+<?php snippet('header'); ?>
+
+<!-- Snippet for hero banner -->
+<?php snippet('banner',
+    array('title' => 'Blog Posts')); ?>
+
+<!-- Main Content -->
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <?php foreach($articles as $article): ?>
+              <div class="post-preview">
+                  <a href="<?= $article ?>">
+                      <h2 class="post-title">
+                          <?= $article->title() ?>
+                      </h2>
+                      <h3 class="post-subtitle">
+                          <?= $article->summary() ?>
+                      </h3>
+                  </a>
+                  <p class="post-meta">Posted by <?= $article->author() ?> on
+                      <?= $article->date('m/d/Y, h:i a') ?></p>
+              </div>
+              <hr>
+          <?php endforeach; ?>
+          </div>
+      </div>
+  </div>
+
+  <hr>
+
+<?php snippet('footer'); ?>
+```
+The only significant difference between the code for this page and the code for the home page is the way that the pages are accessed. In our home page, we used the $page variable to get our featured articles from the home.txt markdown file. In this page, we are calling a Kirby global function called "children()" on our posts page, which returns an array of all of the blog posts that we made earlier. This alone, however, includes the post template that we created, so we call another Kirby function called "visible()" on our array. This filters the array so that it only contains pages which we declared as "visible" in our page settings. That's why we changes the status of our fake blog posts earlier, remember?
+
+##Conclusion
+Well, if you've done everything correctly, you *should* have a fully functional Kirby CMS blog now. Kirby is a great CMS for a personal blog because the panel provides a really nice UI for writing and editing blog posts. Congratulations. You now have your very own, fully customizable personal blog.
+
+The next step is to deploy your blog to a virtual server, like an AWS EC2 instance, so that it may be accessed from anywhere with an internet connection. The AWS documentation is *really* dense, so for beginners especially, this is an entirely different problem to tackle. I may make a blog post in the future to describe how to do this, but that is for another day. For now, thanks for reading! If you have any questions at all, don't hesitate to comment below or contact me personally. I will be sure to answer as soon as I can.
 
 ----
 
-Summary: A quick and dirty guide to creating a personal blog with Kirby CMS
+Summary: In this guide I explain how to create a personal blog from scratch using Kirby CMS and PHP.

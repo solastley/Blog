@@ -2,16 +2,20 @@ Title: Home
 
 ----
 
-featured-article-1-url: kirby-blog
+Featured-article-1-url: kirby-blog
 
 ----
 
-featured-article-2-url: fake-post-1
+Featured-article-2-url: bs4-scraper
 
 ----
 
-featured-article-3-url: fake-post-2
+Featured-article-3-url: fake-post-2
 
 ----
 
-featured-article-4-url: fake-post-3
+Featured-article-4-url: fake-post-3
+
+----
+
+Text: 

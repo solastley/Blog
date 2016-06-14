@@ -59,7 +59,7 @@ hr.small {
 }
 .navbar-custom .nav li a {
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 800;
   letter-spacing: 1px;
 }
@@ -70,6 +70,7 @@ hr.small {
   }
   .navbar-custom .navbar-brand {
     color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     padding: 20px;
   }
   .navbar-custom .navbar-brand:hover,
@@ -78,6 +79,7 @@ hr.small {
   }
   .navbar-custom .nav li a {
     color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     padding: 20px;
   }
   .navbar-custom .nav li a:hover,
@@ -110,18 +112,18 @@ hr.small {
     transition: transform 0.3s;
   }
   .navbar-custom.is-fixed .navbar-brand {
-    color: #404040;
+    color: white;
   }
   .navbar-custom.is-fixed .navbar-brand:hover,
   .navbar-custom.is-fixed .navbar-brand:focus {
-    color: #0085a1;
+    color: rgba(255, 255, 255, 0.8);
   }
   .navbar-custom.is-fixed .nav li a {
-    color: #404040;
+    color: white;
   }
   .navbar-custom.is-fixed .nav li a:hover,
   .navbar-custom.is-fixed .nav li a:focus {
-    color: #0085a1;
+    color: rgba(255, 255, 255, 0.8);
   }
   .navbar-custom.is-visible {
     /* if the user changes the scrolling direction, we show the header */
@@ -409,4 +411,75 @@ body {
 .skills {
     display: inline-block;
     margin-left: 2rem;
+}
+.title-letters {
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.header-padding {
+    height: 10rem;
+}
+.header-padding h1 {
+    margin-bottom: 0;
+    margin-top:10rem;
+    text-align: center;
+}
+.c3-title {
+    font-size: 2rem;
+}
+.c3-legend-item {
+    font-size: 2rem;
+}
+.c3-axis-x .tick {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+.c3-axis-y .tick {
+    font-size: 1.5rem;
+}
+
+.c3 svg g g.c3-axis.c3-axis-y {
+font: 20px sans-serif;
+}
+
+#chart2 {
+    margin-left: 3rem;
+    margin-right: 3rem;
+    padding-top: 5rem;
+}
+.header-padding {
+    position: relative;
+    margin-top: 6rem;
+    width: 100%;
+}
+.olympics-title {
+    color: #252525;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.rings {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+@media (max-width: 480px) {
+    #chart2 {
+        padding-top: 8rem;
+        margin-bottom: 4rem;
+    }
+    .c3-legend-item {
+        font-size: 1.5rem;
+    }
+}
+
+footer {
+    padding-top: 10rem;
 }

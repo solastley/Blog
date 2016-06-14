@@ -5,8 +5,6 @@
     $articles = [];
     array_push($articles, $page->featured_article_1_url());
     array_push($articles, $page->featured_article_2_url());
-    array_push($articles, $page->featured_article_3_url());
-    array_push($articles, $page->featured_article_4_url());
 
 ?>
 
@@ -15,7 +13,7 @@
 
 <!-- Snippet for hero banner -->
 <?php snippet('banner',
-    array('title' => 'BLOG', 'subtitle' => 'Projects, Tutorials, Thoughts')); ?>
+    array('title' => 'SOBLOGMON', 'subtitle' => 'Projects, Tutorials, Thoughts')); ?>
 
 <!-- Main Content -->
   <div class="container">
@@ -32,7 +30,7 @@
                       </h3>
                   </a>
                   <p class="post-meta">Posted by <?= page('posts/' . $article)->author() ?> on
-                      <?php echo page('posts/' . $article)->date('m/d/Y, h:i a') ?></p>
+                      <?php echo page('posts/' . $article)->date('m/d/Y') ?></p>
               </div>
               <hr>
           <?php endforeach; ?>

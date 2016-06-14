@@ -14,3 +14,7 @@ fields:
         label: Featured Article 1
         type: text
         required: true
+    featured_article_2_url:
+        label: Featured Article 2
+        type: text
+        required: true

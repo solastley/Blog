@@ -1,0 +1,40 @@
+Title: Making a Web Scraper with Beautiful Soup for US State SVGs
+
+----
+
+Date: 2016-06-07
+
+----
+
+Author: Solomon Astley
+
+----
+
+Tags: SVG,Beautiful Soup,bs4,Web Scraping,Python
+
+----
+
+Summary: I wrote a Python script that uses Beautiful Soup to grab an interesting collection of SVGs from the LGBTQ community and then edits them so they look neat.
+
+----
+
+Text: 
+
+##Introduction
+For a project at work, we needed high quality SVG files for outlines of the individual US states. The requirements for these SVG files were that they needed to have a single fill color and they needed to be oriented in a straight fashion relative to the individual states themselves, rather than to a map of the entire country. So, for example, this image would not work for Pennsylvania because it is not straight:
+(image: /assets/images/pennsylvania.png height: 300 width: 320)
+However, that *is* how the state is oriented on a US map. Which is important to keep in mind for later. After extensive searching online, I couldn't manage to find a *single* collection of SVGs that suited our needs. Some of the individual states were available, but they were all formatted differently because they had been generated in different ways. I also found one or two SVG maps of the entire country which could be separated into states, but then the states wouldn't be oriented properly. So I had to figure something out.
+
+##The Accident
+While hopelessly searching around Wikimedia for anything relevant to my task at hand, I kept stumbling upon images of US states that were filled with the colors of the LGBTQ flag, like this:
+(image: /assets/images/lgbt-pennsylvania.svg height: 240 width: 320)
+On the same web page as the flag, I found a link called "LGBT flag maps of United States". Of course, I followed it and found almost exactly what I had been searching for: an entire library of high-quality SVG files for all of the US states, oriented properly. There were only two problems:
+1. All of the states were the colors of the LGBTQ flag.
+2. There was no easy way to download all of the files at once.
+
+Now, I could have simply visited each link one at a time and downloaded each file individually, but the computer scientist in me just wouldn't allow it. I had to write a script.
+
+##Beautiful Soup
+Ah, Beautiful Soup. How lovely you are. For any of you that aren't already familiar with this Python library, it functions in conjunction with urllib2 (or more recently in Python 3, urllib.request) to allow you to easily parse through HTML documents for specific elements and specific attributes, classes, ids, etc. The ease with which you can access specific elements in HTML docs is on par with that of jQuery's ability to grab DOM elements on web pages.
+
+BLOG POST IN PROCESS OF BEING COMPLETED
