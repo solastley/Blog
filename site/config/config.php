@@ -44,10 +44,6 @@ kirby()->hook('panel.page.move', function($page) {UpdateRepo();});
 
 function UpdateRepo(){
 
-    site()->update(array(
-        'message' => 'Git Message'
-    ));
-
     chdir("/home/astley/GitProjects/Blog");
     shell_exec("git config user.email 'solastley@gmail.com'");
     shell_exec("git config user.name 'Solomon Astley'");
@@ -65,6 +61,9 @@ function UpdateRepo(){
     if ($result3 !== null) {
         error_log($result3 + '\n\n', 0);
     }
+    site()->update(array(
+        'git-message' => $result3
+    ));
 }
 
 ?>
