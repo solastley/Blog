@@ -18,12 +18,8 @@ Copyright: © 2016 Solomon Astley
 
 ----
 
-message1: Fake Message 1
+Message2: 
 
-----
-
-message2: Fake Message 2
-
-----
-
-message3: Fake Message 3
+[master 8115ac0] automatic commit from updated panel
+ 5 files changed, 42 insertions(+), 5 deletions(-)
+ create mode 100644 content/2-posts/fake/post-template.txt

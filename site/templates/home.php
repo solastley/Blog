@@ -13,7 +13,7 @@
 
 <!-- Snippet for hero banner -->
 <?php snippet('banner',
-    array('title' => 'SOBLOGMON', 'subtitle' => 'Projects, Tutorials, Thoughts')); ?>
+    array('title' => 'SOBLOGMON', 'subtitle' => 'Apples, Tutorials, Thoughts')); ?>
 
 <!-- Main Content -->
   <div class="container">

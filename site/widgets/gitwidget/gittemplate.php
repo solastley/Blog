@@ -1,4 +1,8 @@
 <!-- html for the widget -->
-<h2><?= $message1 ?></h2>
-<h2><?= $message2 ?></h2>
-<h2><?= $message3 ?></h2>
+<form>
+    <textarea cols=50 rows=10>
+        <?= $message1 ?>
+        <?= $message2 ?>
+        <?= $message3 ?>
+    </textarea>
+</form>
