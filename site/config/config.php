@@ -32,7 +32,7 @@ of the system, please check out http://getkirby.com/docs/advanced/options
 /* Kirby Hooks to update the git repository automatically */
 // $panel = panel();
 // $kirby = kirby();
-// $site  = site();
+$site  = site();
 // $user  = site()->user();
 
 kirby()->hook('panel.page.create', function($page) {UpdateRepo();});
@@ -43,6 +43,9 @@ kirby()->hook('panel.page.hide', function($page) {UpdateRepo();});
 kirby()->hook('panel.page.move', function($page) {UpdateRepo();});
 
 function UpdateRepo(){
+
+    $site["Message"] = "Git Message";
+
     chdir("/home/astley/GitProjects/Blog");
     shell_exec("git config user.email 'solastley@gmail.com'");
     shell_exec("git config user.name 'Solomon Astley'");

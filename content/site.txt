@@ -15,3 +15,7 @@ Keywords: Kirby, CMS, blog
 ----
 
 Copyright: © 2016 Solomon Astley
+
+----
+
+Message: 
