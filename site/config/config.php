@@ -51,7 +51,7 @@ function UpdateRepo(){
     error_log("Doing a git add -A: \n\n" . shell_exec("git add -A") . '\n\n');
     error_log("Doing a git commit: \n\n" . shell_exec("git commit -m 'automatic commit from updated panel'") . '\n\n');
     $pull_message = shell_exec("git pull");
-    error_log("Doing a git pull: \n\n" .$pull_message . '\n\n');
+    error_log("Doing a git pull: \n\n" . $pull_message . '\n\n');
     $push_message = shell_exec("git push");
     error_log("Doing a git push: \n\n" . $push_message . '\n\n');
 

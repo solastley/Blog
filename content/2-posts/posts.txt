@@ -1,5 +1,5 @@
-title: Blog Posts
+Title: Blog Posts
 
 ----
 
-text: List of blog posts here
+Text: List of blog posts here

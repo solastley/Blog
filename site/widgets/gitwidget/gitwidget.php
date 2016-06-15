@@ -3,7 +3,7 @@ return array(
   'title' => 'Git Widget',
   'html'  => function() {
     // any data for the template
-    $result4 = panel()->site()->pull_message();
+    $result4 = panel()->site()->message1();
     $pos = strpos($result4, 'Merge conflict in ');
 
     $conflict = false;
