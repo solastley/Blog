@@ -1,7 +1,7 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['conflict'])) { $message = $_POST['conflict']; };
-        if (isset($_POST['filename'])) { $filename = $_POST['filename']; };
+        if (isset($_POST['conflicts'])) { $messages = unserialize($_POST['conflicts']); };
+        if (isset($_POST['filenames'])) { $filenames = unserialize($_POST['filename']); };
 
         if (isset($_POST['fixed-conflict'])) {
             $text = $_POST['fixed-conflict'];
@@ -93,12 +93,16 @@
  </head>
 
 <body>
-    <h3>Please edit and submit the changes to your merge conflict:</h3>
-    <?= $filename ?>
+    <h3>Please edit and submit the changes to your merge conflict(s):</h3>
     <form name="conflict-edit-form" id="conflict-edit-form" method="post">
-        <textarea name="fixed-conflict" rows="20" style="width: 50%;" id="new-message"><?= $message ?></textarea>
-        <input name="filename" id="hidden-filename" style="display: none;" value="<?=$filename?>"/>
+    <?php $i = 0; ?>
+    <?php foreach($filenames as $filename): ?>
+        <?= $filename ?>
+        <textarea name="fixed-conflict" rows="20" style="width: 50%;" class="new-message"><?= $messages[$i] ?></textarea>
+        <input name="filename" id="hidden-filename" style="display: none;" value="<?= $filename ?>"/>
         <br />
         <input type="submit" id="fix-form-submit-btn" />
+    <?php $i = $i + 1; ?>
+    <?php endforeach; ?>
     </form>
 </body>

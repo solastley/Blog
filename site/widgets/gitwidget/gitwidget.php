@@ -4,51 +4,71 @@ return array(
   'html'  => function() {
     // any data for the template
     $pull_message = panel()->site()->pull_message();
-    $pos = strpos($pull_message, 'Merge conflict in ');
 
-    $conflict = false;
-    $filename = '';
+    $target1 = 'Merge conflict in ';
+    $lastPos = 0;
+    $start_positions = array();
+    while (($lastPos = strpos($pull_message, $target1, $lastPos)) !== false) {
+        $start_positions[] = $lastPos;
+        $lastPos = $lastPos + strlen($target1);
+    }
 
-    if ($pos === false) {
-        $pull_message = "No conflict";
+    $conflict_status = false;
+    $filenames = array();
+
+    if (count($start_positions) == 0) {
         site()->update(array(
             'pull_message' => '',
             'push_message' => ''
         ));
     }
     else {
-        $conflict = true;
+        $conflict_status = true;
 
-        $pos2 = strpos($pull_message, 'Automatic merge failed');
-        $file_extension = substr($pull_message, $pos + 18, $pos2 - $pos - 19);
-        $filename = panel()->kirby()->roots()->index() . '/' . $file_extension;
+        $target2 = 'Automatic merge failed';
+        $lastPos = 0;
+        $end_positions = array();
+        while (($lastPos = strpos($pull_message, $target2, $lastPos)) !== false) {
+            $end_positions[] = $lastPos;
+            $lastPos = $lastPos + strlen($target2);
+        }
 
-        $pull_message = '';
         $i = 0;
-        $lines = file($filename);
-        foreach ($lines as $line) {
-            $pos = strpos($line, '<<<<<<< HEAD');
-            $pos2 = strpos($line, '>>>>>>>');
-            if ($pos === false) {
-                $i = $i + 1;
-                continue;
-            }
-            else {
-                while ($pos2 === false) {
-                    $pull_message .= $lines[$i];
+        foreach($start_positions as $start) {
+            $file_extension = substr($pull_message, $start_positions[$i] + 18, $end_positions[$i] - $start_positions[$i] - 19);
+            $filenames[] = panel()->kirby()->roots()->index() . '/' . $file_extension;
+            $i = $i + 1;
+        }
+
+        $conflicts = array();
+        foreach($filenames as $filename) {
+            $conflict_message = '';
+            $lines = file($filename);
+            foreach ($lines as $line) {
+                $pos = strpos($line, '<<<<<<< HEAD');
+                $pos2 = strpos($line, '>>>>>>>');
+                if ($pos === false) {
                     $i = $i + 1;
-                    $pos2 = strpos($lines[$i], '>>>>>>>');
+                    continue;
                 }
-                $pull_message .= $lines[$i];
-                break;
+                else {
+                    while ($pos2 === false) {
+                        $conflict_message .= $lines[$i];
+                        $i = $i + 1;
+                        $pos2 = strpos($lines[$i], '>>>>>>>');
+                    }
+                    $conflict_message .= $lines[$i];
+                    break;
+                }
             }
+            array_push($conflicts, $conflict_message);
         }
     }
     $data = array(
-        'conflict' => $conflict,
-        'filename' => $filename,
-        'pull_message' => $pull_message,
-        'push_message' => panel()->site()->push_message(),
+        'conflict_status' => $conflict_status,
+        'filenames' => $filenames,
+        'conflicts' => $conflicts,
+        'push_message' => panel()->site()->push_message()
     );
     return tpl::load(__DIR__ . DS . 'gittemplate.php', $data);
   }
