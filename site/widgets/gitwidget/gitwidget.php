@@ -10,7 +10,7 @@ return array(
 
     if ($pos === false) {
         $pull_message = "No conflict";
-        site()->update(array(
+        panel()->site()->update(array(
             'pull_message' => '',
             'push_message' => ''
         ));
