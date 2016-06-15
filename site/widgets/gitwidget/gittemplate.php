@@ -31,7 +31,7 @@
 <?php if ($conflict): ?>
     <h2 class="bad-merge">Merge conflict found:</h2>
     <form action="" method="post">
-        <textarea name="conflict" rows=20><?= $message4 ?></textarea>
+        <textarea name="conflict" rows=20><?= $pull_message ?></textarea>
         <input type="submit" name="submit" />
     </form>
 <?php else: ?>
