@@ -1,6 +1,6 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_SERVER['REQUEST_URI'] == '/contact') {
     // Check for empty fields
     if(empty($_POST['name'])      ||
        empty($_POST['email'])     ||

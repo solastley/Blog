@@ -1,10 +1,10 @@
-<!-- PHP script to change variables on form submit -->
-<?php
-    if (isset($_POST['submit'])) {
-        $changes = $_POST['merge'];
-        echo $changes;
-    }
- ?>
+<!-- JavaScript for widget (does not have normal header) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        
+    });
+</script>
 
 <!-- html for the widget -->
 <style>
@@ -28,10 +28,18 @@
     }
 </style>
 
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $message = $_POST['conflict'];
+        echo $message;
+    }
+ ?>
+
 <?php if ($conflict): ?>
     <h2 class="bad-merge">Merge conflict found:</h2>
-    <form action="" method="post">
-        <textarea name="conflict" rows=20><?= $pull_message ?></textarea>
+    <form action="<?= page('gitwidget')->url() ?>" method="post" id="conflict-form">
+        <div class="conflict-message"><?= $pull_message ?></div>
+        <textarea name="conflict" id="conflict"></textarea>
         <input type="submit" name="submit" />
     </form>
 <?php else: ?>

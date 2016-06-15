@@ -46,7 +46,7 @@ return array(
     $data = array(
         'conflict' => $conflict,
         'pull_message' => $pull_message,
-        'push_message' => panel()->site()->message3(),
+        'push_message' => panel()->site()->push_message(),
     );
     return tpl::load(__DIR__ . DS . 'gittemplate.php', $data);
   }
