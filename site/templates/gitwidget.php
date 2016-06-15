@@ -1,7 +1,7 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['conflict']) { $message = $_POST['conflict']; });
-        if (isset($_POST['filename']) { $message = $_POST['filename']; });
+        if (isset($_POST['conflict'])) { $message = $_POST['conflict']; };
+        if (isset($_POST['filename'])) { $filename = $_POST['filename']; };
 
         if (isset($_POST['fixed-conflict'])) {
             $text = $_POST['fixed-conflict'];
