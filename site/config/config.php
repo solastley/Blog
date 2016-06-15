@@ -62,6 +62,7 @@ function UpdateRepo(){
     if ($result3 !== null) {
         error_log($result3 + '\n\n', 0);
     }
+
     site()->update(array(
         'message1' => $result1,
         'message2' => $result2,

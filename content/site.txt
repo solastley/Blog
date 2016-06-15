@@ -20,5 +20,13 @@ Copyright: © 2016 Solomon Astley
 
 Message2: 
 
-[master 5efa42c] automatic commit from updated panel
- 3 files changed, 4 insertions(+), 5 deletions(-)
+[master b620b46] automatic commit from updated panel
+ 5 files changed, 10 insertions(+), 6 deletions(-)
+
+----
+
+Message4: 
+
+Auto-merging content/2-posts/1-kirby-blog/post-template.txt
+CONFLICT (content): Merge conflict in content/2-posts/1-kirby-blog/post-template.txt
+Automatic merge failed; fix conflicts and then commit the result.
