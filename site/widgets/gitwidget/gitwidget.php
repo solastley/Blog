@@ -7,6 +7,7 @@ return array(
     $pos = strpos($pull_message, 'Merge conflict in ');
 
     $conflict = false;
+    $filename = '';
 
     if ($pos === false) {
         $pull_message = "No conflict";
