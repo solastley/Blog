@@ -18,7 +18,12 @@ Copyright: © 2016 Solomon Astley
 
 ----
 
-Message2: 
+Pull-message: 
 
-[master 70378b8] automatic commit from updated panel
- 1 file changed, 1 insertion(+), 1 deletion(-)
+----
+
+Message1: 
+
+----
+
+Message2: 
