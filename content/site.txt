@@ -18,7 +18,7 @@ Copyright: © 2016 Solomon Astley
 
 ----
 
-Pull-message: 
+Pull-message:
 
 Auto-merging content/2-posts/1-kirby-blog/post-template.txt
 CONFLICT (content): Merge conflict in content/2-posts/1-kirby-blog/post-template.txt
