@@ -38,6 +38,7 @@ return array(
                     $i = $i + 1;
                     $pos2 = strpos($lines[$i], '>>>>>>>');
                 }
+                $pull_message .= $lines[$i];
                 break;
             }
         }
