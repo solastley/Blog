@@ -7,6 +7,7 @@ password: >
 language: en
 role: admin
 history:
+  - posts
   - posts/kirby-blog
   - olympics
   - home
