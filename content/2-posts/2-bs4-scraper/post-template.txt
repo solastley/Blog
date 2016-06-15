@@ -6,7 +6,7 @@ Date: 2016-06-07
 
 ----
 
-Author: Solomon Astley
+Author: Paul Astley
 
 ----
 
@@ -18,7 +18,7 @@ Summary: I wrote a Python script that uses Beautiful Soup to grab an interesting
 
 ----
 
-Text: 
+Text:
 
 ##Introduction
 For a project at work, we needed high quality SVG files for outlines of the individual US states. The requirements for these SVG files were that they needed to have a single fill color and they needed to be oriented in a straight fashion relative to the individual states themselves, rather than to a map of the entire country. So, for example, this image would not work for Pennsylvania because it is not straight:
