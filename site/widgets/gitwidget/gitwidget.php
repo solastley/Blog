@@ -15,6 +15,7 @@ return array(
 
     $conflict_status = false;
     $filenames = array();
+    $conflicts = array();
 
     if (count($start_positions) == 0) {
         site()->update(array(
@@ -40,7 +41,6 @@ return array(
             $i = $i + 1;
         }
 
-        $conflicts = array();
         foreach($filenames as $filename) {
             $conflict_message = '';
             $lines = file($filename);
