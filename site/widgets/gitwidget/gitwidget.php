@@ -45,6 +45,7 @@ return array(
     }
     $data = array(
         'conflict' => $conflict,
+        'filename' => $filename,
         'pull_message' => $pull_message,
         'push_message' => panel()->site()->push_message(),
     );
