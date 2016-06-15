@@ -3,17 +3,21 @@ return array(
   'title' => 'Git Widget',
   'html'  => function() {
     // any data for the template
-    $result4 = panel()->site()->message4();
+    $result4 = panel()->site()->pull_message();
     $pos = strpos($result4, 'Merge conflict in ');
 
     $conflict = false;
 
     if ($pos === false) {
         $result4 = "No conflict";
+        site()->update(array(
+            'message1' => '',
+            'message2' => ''
+        ));
     }
     else {
         $conflict = true;
-        
+
         $pos2 = strpos($result4, 'Automatic merge failed');
         $file_extension = substr($result4, $pos + 18, $pos2 - $pos - 19);
         $filename = panel()->kirby()->roots()->index() . '/' . $file_extension;
