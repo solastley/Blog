@@ -18,12 +18,8 @@ Copyright: © 2016 Solomon Astley
 
 ----
 
-Pull-message: 
+Pull-message:
 
 ----
 
-Message1: 
-
-----
-
-Message2: 
+Push-message:

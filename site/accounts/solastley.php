@@ -8,5 +8,6 @@ language: en
 role: admin
 history:
   - posts/kirby-blog
+  - posts
   - olympics
   - home
