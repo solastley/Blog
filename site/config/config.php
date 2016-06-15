@@ -48,10 +48,12 @@ function UpdateRepo(){
     shell_exec("git config user.email 'solastley@gmail.com'");
     shell_exec("git config user.name 'Solomon Astley'");
     shell_exec("git config push.default simple");
-    shell_exec("git add -A");
-    shell_exec("git commit -m 'automatic commit from updated panel'");
+    error_log("Doing a git add -A: \n\n" . shell_exec("git add -A") . '\n\n');
+    error_log("Doing a git commit: \n\n" . shell_exec("git commit -m 'automatic commit from updated panel'") . '\n\n');
     $pull_message = shell_exec("git pull");
+    error_log("Doing a git pull: \n\n" .$pull_message . '\n\n');
     $push_message = shell_exec("git push");
+    error_log("Doing a git push: \n\n" . $push_message . '\n\n');
 
     site()->update(array(
         'message1' => $pull_message,
