@@ -24,8 +24,7 @@ return array(
 
     if (count($filenames) == 0) {
         site()->update(array(
-            'pull_message' => '',
-            'push_message' => ''
+            'pull_message' => ''
         ));
     }
     else {
@@ -65,8 +64,7 @@ return array(
     $data = array(
         'conflict_status' => $conflict_status,
         'filenames' => $filenames,
-        'conflicts' => $conflicts,
-        'push_message' => panel()->site()->push_message()
+        'conflicts' => $conflicts
     );
     return tpl::load(__DIR__ . DS . 'gittemplate.php', $data);
   }
