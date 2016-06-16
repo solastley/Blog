@@ -1,50 +1,54 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['conflicts'])) { $messages = unserialize($_POST['conflicts']); };
-        if (isset($_POST['filenames'])) { $filenames = unserialize($_POST['filename']); };
+        if (isset($_POST['conflicts'])) { $messages = unserialize(base64_decode($_POST['conflicts'])); };
+        if (isset($_POST['filenames'])) { $filenames = unserialize(base64_decode($_POST['filenames'])); };
 
-        if (isset($_POST['fixed-conflict'])) {
-            $text = $_POST['fixed-conflict'];
-            $filename = $_POST['filename'];
+        if (isset($_POST['fixed-conflicts'])) {
+            $fixed_conflicts = $_POST['fixed-conflicts'];
+            $filenames = $_POST['fixed-filenames'];
 
-            $lines = file($filename);
-            $i = 0;
             $first_line;
             $last_line;
-            foreach($lines as $line) {
-                $pos = strpos($line, '<<<<<<< HEAD');
-                $pos2 = strpos($line, '>>>>>>>');
-                if ($pos === false) {
-                    $i = $i + 1;
-                    continue;
-                }
-                else {
-                    $first_line = $i;
-                    while ($pos2 === false) {
+            $j = 0;
+            foreach ($filenames as $filename) {
+                $lines = file($filename);
+                $i = 0;
+                foreach($lines as $line) {
+                    $pos = strpos($line, '<<<<<<< HEAD');
+                    $pos2 = strpos($line, '>>>>>>>');
+                    if ($pos === false) {
                         $i = $i + 1;
-                        $pos2 = strpos($lines[$i], '>>>>>>>');
+                        continue;
                     }
-                    $last_line = $i;
-                    break;
+                    else {
+                        $first_line = $i;
+                        while ($pos2 === false) {
+                            $i = $i + 1;
+                            $pos2 = strpos($lines[$i], '>>>>>>>');
+                        }
+                        $last_line = $i;
+                        break;
+                    }
                 }
-            }
 
-            $file = fopen($filename, 'w');
-            $i = 0;
-            $written = false;
-            foreach($lines as $line) {
-                if ($i < $first_line || $i > $last_line) {
-                    fwrite($file, $line);
-                    $i = $i + 1;
+                $file = fopen($filename, 'w');
+                $i = 0;
+                $written = false;
+                foreach($lines as $line) {
+                    if ($i < $first_line || $i > $last_line) {
+                        fwrite($file, $line);
+                        $i = $i + 1;
+                    }
+                    else if (!$written) {
+                        fwrite($file, $fixed_conflicts[$j]);
+                        $written = true;
+                        $i = $i + 1;
+                    }
+                    else {
+                        $i = $i + 1;
+                    }
                 }
-                else if (!$written) {
-                    fwrite($file, $text);
-                    $written = true;
-                    $i = $i + 1;
-                }
-                else {
-                    $i = $i + 1;
-                }
+                $j = $j + 1;
             }
 
             chdir("/home/astley/GitProjects/Blog");
@@ -82,6 +86,8 @@
      <?php echo css('/assets/css/c3.min.css') ?>
      <?php echo css('/assets/css/clean-blog.css') ?>
 
+     <?php echo js('/assets/js/jquery.min.js') ?>
+
      <!-- favicon link -->
      <link rel='shortcut icon' type='image/x-icon' href='/assets/images/favicon.ico' />
 
@@ -90,7 +96,7 @@
      <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
      <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
- </head>
+</head>
 
 <body>
     <h3>Please edit and submit the changes to your merge conflict(s):</h3>
@@ -98,11 +104,12 @@
     <?php $i = 0; ?>
     <?php foreach($filenames as $filename): ?>
         <?= $filename ?>
-        <textarea name="fixed-conflict" rows="20" style="width: 50%;" class="new-message"><?= $messages[$i] ?></textarea>
-        <input name="filename" id="hidden-filename" style="display: none;" value="<?= $filename ?>"/>
         <br />
-        <input type="submit" id="fix-form-submit-btn" />
+        <textarea name="fixed-conflicts[]" rows="20" style="width: 50%;" class="new-message"><?= $messages[$i] ?></textarea>
+        <input name="fixed-filenames[]" class="hidden-filename" style="display: none;" value="<?= $filename ?>"/>
+        <br />
     <?php $i = $i + 1; ?>
     <?php endforeach; ?>
+        <input type="submit" id="fix-form-submit-btn" />
     </form>
 </body>

@@ -5,7 +5,7 @@ return array(
     // any data for the template
     $pull_message = panel()->site()->pull_message();
 
-    $target1 = 'Merge conflict in ';
+    $target1 = 'Auto-merging ';
     $lastPos = 0;
     $start_positions = array();
     while (($lastPos = strpos($pull_message, $target1, $lastPos)) !== false) {
@@ -26,7 +26,7 @@ return array(
     else {
         $conflict_status = true;
 
-        $target2 = 'Automatic merge failed';
+        $target2 = 'CONFLICT (';
         $lastPos = 0;
         $end_positions = array();
         while (($lastPos = strpos($pull_message, $target2, $lastPos)) !== false) {
@@ -36,12 +36,13 @@ return array(
 
         $i = 0;
         foreach($start_positions as $start) {
-            $file_extension = substr($pull_message, $start_positions[$i] + 18, $end_positions[$i] - $start_positions[$i] - 19);
+            $file_extension = substr($pull_message, $start_positions[$i] + 13, $end_positions[$i] - $start_positions[$i] - 14);
             $filenames[] = panel()->kirby()->roots()->index() . '/' . $file_extension;
             $i = $i + 1;
         }
 
         foreach($filenames as $filename) {
+            $i = 0;
             $conflict_message = '';
             $lines = file($filename);
             foreach ($lines as $line) {

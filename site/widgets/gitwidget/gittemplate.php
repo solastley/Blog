@@ -3,16 +3,11 @@
 <script>
     $(document).ready(function(){
         var messages = [];
-        $('.conflict-message').each(function(index, value) {
+        $('.conflict-message').each(function(index) {
             var message = $(this).html();
             messages.push(message);
             var new_message = message.split('\n').join('<br />');
-            $(this).html(new_message);
-        });
-
-        $('#submit-btn').click(function(){
-            $('#hidden-conflict').val('<?php echo serialize($conflicts); ?>');
-            $('#hidden-filename').val('<?php echo serialize($filenames); ?>');
+            $(this).html(new_message + '<br /><br />');
         });
     });
 </script>
@@ -36,7 +31,10 @@
     textarea {
         display: none;
     }
-    input {
+    #hidden-filename {
+        display: none;
+    }
+    #hidden-conflict {
         display: none;
     }
     #submit-btn {
@@ -46,14 +44,14 @@
 </style>
 
 <?php if ($conflict_status): ?>
-    <h2 class="bad-merge">Merge conflict found:</h2>
+    <h2 class="bad-merge">Merge conflict(s) found:</h2>
     <form action="<?= page('gitwidget')->url() ?>" method="post" id="conflict-form">
         <?php foreach ($conflicts as $conflict): ?>
             <div class="conflict-message"><?= $conflict ?></div>
         <?php endforeach; ?>
-        <textarea name="conflicts" id="hidden-conflict"></textarea>
-        <input name="filenames" id="hidden-filename" />
-        <input type="submit" name="submit" id="submit-btn" value="Click here to fix"/>
+        <input name="conflicts" id="hidden-conflict" value='<?php echo base64_encode(serialize($conflicts)) ?>'/>
+        <input name="filenames" id="hidden-filename" value='<?php echo base64_encode(serialize($filenames)) ?>'/>
+        <input type="submit" name="submit" id="submit-btn" value="Click here to fix" />
     </form>
 <?php else: ?>
     <h2 class="good-merge">No merge conflicts found.</h2>
