@@ -43,8 +43,8 @@ kirby()->hook('panel.page.hide', function($page) {UpdateRepo();});
 kirby()->hook('panel.page.move', function($page) {UpdateRepo();});
 
 function UpdateRepo(){
-
-    chdir("/home/astley/GitProjects/Blog");
+    $index_dir = kirby()->roots()->index();
+    chdir($index_dir);
     shell_exec("git config user.email 'solastley@gmail.com'");
     shell_exec("git config user.name 'Solomon Astley'");
     shell_exec("git config push.default simple");

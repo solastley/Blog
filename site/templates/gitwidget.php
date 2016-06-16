@@ -129,7 +129,9 @@
                 $j = $j + 1;
             }
 
-            chdir("/home/astley/GitProjects/Blog");
+            // Execute the git commands and update the site variables
+            $index_dir = kirby()->roots()->index();
+            chdir($index_dir);
             shell_exec("git config user.email 'solastley@gmail.com'");
             shell_exec("git config user.name 'Solomon Astley'");
             shell_exec("git config push.default simple");
