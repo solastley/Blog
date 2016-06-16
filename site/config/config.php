@@ -43,16 +43,24 @@ kirby()->hook('panel.page.hide', function($page) {UpdateRepo();});
 kirby()->hook('panel.page.move', function($page) {UpdateRepo();});
 
 function UpdateRepo(){
+    $class_loc = kirby()->roots()->plugins() . '/Git/Git.php';
+    require_once($class_loc);
+    $repo_loc = kirby()->roots()->index() . '/.git';
+    $repo = Git::open($repo_loc);
 
-    chdir("/home/astley/GitProjects/Blog");
+    $repo->add('*');
+    $repo->commit('automatic commit from updated pane');
+    $pull_message = $repo->pull('origin', 'master');
+    $push_message = $repo->push('origin', 'master');
+    /*chdir("/home/astley/GitProjects/Blog");
     shell_exec("git config user.email 'solastley@gmail.com'");
     shell_exec("git config user.name 'Solomon Astley'");
     shell_exec("git config push.default simple");
     error_log("Doing a git add -A --- " . shell_exec("git add -A") . ' --- ');
     error_log("Doing a git commit: --- " . shell_exec("git commit -m 'automatic commit from updated panel'") . ' --- ');
-    $pull_message = shell_exec("git pull");
+    $pull_message = shell_exec("git pull");*/
     error_log("Doing a git pull: --- " . $pull_message . ' --- ');
-    $push_message = shell_exec("git push");
+    // $push_message = shell_exec("git push");
     error_log("Doing a git push: --- " . $push_message . ' --- ');
 
     site()->update(array(
