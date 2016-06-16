@@ -45,21 +45,18 @@ kirby()->hook('panel.page.move', function($page) {UpdateRepo();});
 function UpdateRepo(){
 
     chdir("/home/astley/GitProjects/Blog");
-    exec("git config user.email 'solastley@gmail.com'");
-    exec("git config user.name 'Solomon Astley'");
-    exec("git config push.default simple");
-    exec("git add -A");
-    exec("git commit -m 'automatic commit from updated panel'");
-    // $pull_message = shell_exec("git pull");
-    // error_log($pull_message);
-    $stuff_array = exec("git pull");
+    shell_exec("git config user.email 'solastley@gmail.com'");
+    shell_exec("git config user.name 'Solomon Astley'");
+    shell_exec("git config push.default simple");
+    shell_exec("git add -A");
+    shell_exec("git commit -m 'automatic commit from updated panel'");
+    $pull_message = shell_exec("git pull");
+    error_log($pull_message);
     shell_exec("git push");
 
-    error_log(print_r($stuff_array));
-
-    /*site()->update(array(
+    site()->update(array(
         'pull_message' => $pull_message
-    ));*/
+    ));
 }
 
 ?>

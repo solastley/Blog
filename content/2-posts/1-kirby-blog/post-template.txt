@@ -6,7 +6,7 @@ Date: 2016-06-03
 
 ----
 
-Author: Stuff Astley
+Author: Solomon Astley
 
 ----
 
@@ -14,7 +14,7 @@ Tags: blog,Kirby CMS,PHP
 
 ----
 
-Text: 
+Text:
 
 ##Introduction
 
