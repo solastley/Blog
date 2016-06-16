@@ -43,6 +43,7 @@ kirby()->hook('panel.page.hide', function($page) {UpdateRepo();});
 kirby()->hook('panel.page.move', function($page) {UpdateRepo();});
 
 function UpdateRepo(){
+    error_log("Doing FUCKING ANYTHING");
     $Git = kirby()->roots()->plugins() . '/Git/Git.php';
     require_once($Git);
 
