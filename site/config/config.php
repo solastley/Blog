@@ -53,6 +53,7 @@ function UpdateRepo(){
     $pull_message = $repo->pull('origin', 'master');
     $push_message = $repo->push('origin', 'master');
 
+    error_log("Doing FUCKING ANYTHING");
     error_log($pull_message);
     error_log($push_message);
 
