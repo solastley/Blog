@@ -57,7 +57,8 @@ function UpdateRepo(){
         error_log("Did the pull and got " . $pull_message);
     }
     catch (Exception $e) {
-        error_log("Caught an exception: " . $e->getMessage() . '\n');
+        error_log("Caught an exception:\n");
+        error_log(print_r($e, true));
     }
     $push_message = $repo->push('origin', 'master');
 

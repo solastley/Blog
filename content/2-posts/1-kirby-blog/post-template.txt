@@ -14,7 +14,7 @@ Tags: blog,Kirby CMS,PHP
 
 ----
 
-Text: 
+Text:
 
 ##Introduction
 
