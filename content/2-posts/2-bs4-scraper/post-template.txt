@@ -6,7 +6,7 @@ Date: 2016-06-07
 
 ----
 
-Author: Solomon Astley
+Author: Bro Astley
 
 ----
 
@@ -14,7 +14,7 @@ Tags: SVG,Beautiful Soup,bs4,Web Scraping,Python
 
 ----
 
-Summary: I wrote a Python script that uses Beautiful Soup to grab an interesting collection of SVGs from the LGBTQ community and then edits them so they look neat.
+Summary: I wrote a PHP script that uses Beautiful Soup to grab an interesting collection of SVGs from the LGBTQ community and then edits them so they look neat.
 
 ----
 
