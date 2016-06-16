@@ -11,8 +11,11 @@
             $last_line;
             $j = 0;
             foreach ($filenames as $filename) {
+                $first_line = array();
+                $last_line = array();
                 $lines = file($filename);
                 $i = 0;
+                $temp_index;
                 foreach($lines as $line) {
                     $pos = strpos($line, '<<<<<<< HEAD');
                     $pos2 = strpos($line, '>>>>>>>');
@@ -21,32 +24,37 @@
                         continue;
                     }
                     else {
-                        $first_line = $i;
+                        $temp_index = $i + 1;
+                        array_push($first_line, $i);
                         while ($pos2 === false) {
                             $i = $i + 1;
                             $pos2 = strpos($lines[$i], '>>>>>>>');
                         }
-                        $last_line = $i;
-                        break;
+                        array_push($last_line, $i);
+                        $i = $temp_index;
+                        continue;
                     }
                 }
 
                 $file = fopen($filename, 'w');
                 $i = 0;
-                $written = false;
+                $k = 0;
+                $written = array();
+                array_push($written, false);
                 foreach($lines as $line) {
-                    if ($i < $first_line || $i > $last_line) {
+                    if ($i < $first_line[$k] || $i > $last_line[$k]) {
                         fwrite($file, $line);
                         $i = $i + 1;
                     }
-                    else if (!$written) {
-                        fwrite($file, $fixed_conflicts[$j]);
-                        $written = true;
+                    else if (!$written[$k]) {
+                        fwrite($file, $fixed_conflicts[$j][$k]);
+                        $written[$k] = true;
                         $i = $i + 1;
                     }
                     else {
                         $i = $i + 1;
                     }
+                    $k = $k + 1;
                 }
                 $j = $j + 1;
             }
@@ -99,17 +107,25 @@
 </head>
 
 <body>
-    <h3>Please edit and submit the changes to your merge conflict(s):</h3>
-    <form name="conflict-edit-form" id="conflict-edit-form" method="post">
-    <?php $i = 0; ?>
-    <?php foreach($filenames as $filename): ?>
-        <?= $filename ?>
-        <br />
-        <textarea name="fixed-conflicts[]" rows="20" style="width: 50%;" class="new-message"><?= $messages[$i] ?></textarea>
-        <input name="fixed-filenames[]" class="hidden-filename" style="display: none;" value="<?= $filename ?>"/>
-        <br />
-    <?php $i = $i + 1; ?>
-    <?php endforeach; ?>
-        <input type="submit" id="fix-form-submit-btn" />
-    </form>
+    <?php if (!isset($_POST['fixed-conflicts'])): ?>
+        <h3>Please edit and submit the changes to your merge conflict(s):</h3>
+        <form name="conflict-edit-form" id="conflict-edit-form" method="post">
+        <?php $i = 0; ?>
+        <?php foreach($filenames as $filename): ?>
+            <?= $filename ?>
+            <br />
+            <?php $j = 0; ?>
+            <?php foreach($messages[$i] as $message): ?>
+                <textarea name="fixed-conflicts[<?=$i?>][<?=$j?>]" rows="20" style="width: 50%;" class="new-message"><?= $message ?></textarea>
+                <input name="fixed-filenames[<?=$i?>]" class="hidden-filename" style="display: none;" value="<?= $filename ?>"/>
+                <br />
+            <?php $j = $j + 1; ?>
+            <?php endforeach; ?>
+        <?php $i = $i + 1; ?>
+        <?php endforeach; ?>
+            <input type="submit" id="fix-form-submit-btn" />
+        </form>
+    <?php else: ?>
+        <h3>Merge conflicts resolved.</h3>
+    <?php endif; ?>
 </body>
