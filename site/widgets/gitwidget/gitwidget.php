@@ -59,7 +59,7 @@ return array(
                         $pos2 = strpos($lines[$i], '>>>>>>>');
                     }
                     $conflict_message .= $lines[$i];
-                    continue;
+                    break;
                 }
             }
             array_push($conflicts, $conflict_message);
