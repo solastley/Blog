@@ -6,7 +6,8 @@ Date: 2016-06-07
 
 ----
 
-Author: Solomon Astley
+Author: Butch Astley
+
 ----
 
 Tags: SVG,Beautiful Soup,bs4,Web Scraping,Python
@@ -17,9 +18,9 @@ Summary: I wrote a Python script that uses Beautiful Soup to grab an interesting
 
 ----
 
-Text:
+Text: 
 
-##Introduction
+##Conclusion
 For a project at work, we needed high quality SVG files for outlines of the individual US states. The requirements for these SVG files were that they needed to have a single fill color and they needed to be oriented in a straight fashion relative to the individual states themselves, rather than to a map of the entire country. So, for example, this image would not work for Pennsylvania because it is not straight:
 (image: /assets/images/pennsylvania.png height: 300 width: 320)
 However, that *is* how the state is oriented on a US map. Which is important to keep in mind for later. After extensive searching online, I couldn't manage to find a *single* collection of SVGs that suited our needs. Some of the individual states were available, but they were all formatted differently because they had been generated in different ways. I also found one or two SVG maps of the entire country which could be separated into states, but then the states wouldn't be oriented properly. So I had to figure something out.
