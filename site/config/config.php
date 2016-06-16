@@ -43,35 +43,7 @@ kirby()->hook('panel.page.hide', function($page) {UpdateRepo();});
 kirby()->hook('panel.page.move', function($page) {UpdateRepo();});
 
 function UpdateRepo(){
-    $index_dir = kirby()->roots()->index();
-    chdir($index_dir);
-    shell_exec("git config user.email 'solastley@gmail.com'");
-    shell_exec("git config user.name 'Solomon Astley'");
-    shell_exec("git config push.default simple");
-    shell_exec("git add -A");
-    shell_exec("git commit -m 'automatic commit from updated panel'");
-    // $pull_message = shell_exec("git pull");
-    // error_log($pull_message);
-
-    $desc = array(
-        0 => array('pipe', 'r'), // 0 for STDIN
-        1 => array('pipe', 'w'), // 1 for STDOUT
-        2 => array('pipe', 'w')
-    );
-    $cmd = 'git pull';
-    $p = proc_open($cmd, $desc, $pipes);
-    fclose($pipes[0]);
-    $pull_message = stream_get_contents($pipes[1]);
-    fclose($pipes[1]);
-    fclose($pipes[2]);
-    proc_close($p);
-
-    exec("git push", $out, $status);
-
-    site()->update(array(
-        'pull_message' => $pull_message,
-        'push_status' => $status
-    ));
+    git_update();
 }
 
 ?>
