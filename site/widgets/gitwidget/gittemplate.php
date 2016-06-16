@@ -46,8 +46,10 @@
 <?php if ($conflict_status): ?>
     <h2 class="bad-merge">Merge conflict(s) found:</h2>
     <form action="<?= page('gitwidget')->url() ?>" method="post" id="conflict-form">
-        <?php foreach ($conflicts as $conflict): ?>
-            <div class="conflict-message"><?= $conflict ?></div>
+        <?php foreach ($conflicts as $file_conflicts): ?>
+            <?php foreach ($file_conflicts as $conflict): ?>
+                <div class="conflict-message"><?= $conflict ?></div>
+            <?php endforeach; ?>
         <?php endforeach; ?>
         <input name="conflicts" id="hidden-conflict" value='<?php echo base64_encode(serialize($conflicts)) ?>'/>
         <input name="filenames" id="hidden-filename" value='<?php echo base64_encode(serialize($filenames)) ?>'/>

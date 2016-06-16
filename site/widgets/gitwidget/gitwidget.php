@@ -41,7 +41,10 @@ return array(
             $i = $i + 1;
         }
 
+        $temp_index;
+        $j = 0;
         foreach($filenames as $filename) {
+            array_push($conflicts, array());
             $i = 0;
             $conflict_message = '';
             $lines = file($filename);
@@ -53,16 +56,20 @@ return array(
                     continue;
                 }
                 else {
+                    $temp_index = $i + 1;
                     while ($pos2 === false) {
                         $conflict_message .= $lines[$i];
                         $i = $i + 1;
                         $pos2 = strpos($lines[$i], '>>>>>>>');
                     }
                     $conflict_message .= $lines[$i];
-                    break;
+                    array_push($conflicts[$j], $conflict_message);
+                    $conflict_message = '';
+                    $i = $temp_index;
+                    continue;
                 }
             }
-            array_push($conflicts, $conflict_message);
+            $j = $j + 1;
         }
     }
     $data = array(
