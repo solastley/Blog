@@ -64,7 +64,8 @@ return array(
     $data = array(
         'conflict_status' => $conflict_status,
         'filenames' => $filenames,
-        'conflicts' => $conflicts
+        'conflicts' => $conflicts,
+        'push_status' => panel()->site()->push_status()
     );
     return tpl::load(__DIR__ . DS . 'gittemplate.php', $data);
   }

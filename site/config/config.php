@@ -52,10 +52,11 @@ function UpdateRepo(){
     shell_exec("git commit -m 'automatic commit from updated panel'");
     $pull_message = shell_exec("git pull");
     error_log($pull_message);
-    shell_exec("git push");
+    exec("git push", $out, $status);
 
     site()->update(array(
-        'pull_message' => $pull_message
+        'pull_message' => $pull_message,
+        'push_status' => $status
     ));
 }
 

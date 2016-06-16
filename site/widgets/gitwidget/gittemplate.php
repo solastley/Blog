@@ -42,7 +42,7 @@
         padding: 4px 8px;
     }
 </style>
-
+<?php echo 'Push status is: ' . $push_status; ?>
 <?php if ($conflict_status): ?>
     <h2 class="bad-merge">Merge conflict(s) found:</h2>
     <form action="<?= page('gitwidget')->url() ?>" method="post" id="conflict-form">
