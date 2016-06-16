@@ -43,7 +43,7 @@ kirby()->hook('panel.page.hide', function($page) {UpdateRepo();});
 kirby()->hook('panel.page.move', function($page) {UpdateRepo();});
 
 function UpdateRepo(){
-    error_log("Doing FUCKING ANYTHING");
+    error_log("Doing FUCKING ANYTHING1");
     $Git = kirby()->roots()->plugins() . '/Git/Git.php';
     require_once($Git);
 
@@ -51,10 +51,11 @@ function UpdateRepo(){
     $repo = Git::open($repo_loc);
     $repo->add('*');
     $repo->commit('automatic commit from updated pane');
+    error_log("Doing FUCKING ANYTHING2");
     $pull_message = $repo->pull('origin', 'master');
     $push_message = $repo->push('origin', 'master');
 
-    error_log("Doing FUCKING ANYTHING");
+    error_log("Doing FUCKING ANYTHING3");
     error_log($pull_message);
     error_log($push_message);
 
