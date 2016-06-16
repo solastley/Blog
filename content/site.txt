@@ -20,6 +20,10 @@ Copyright: © 2016 Solomon Astley
 
 Pull-message: 
 
+Auto-merging content/2-posts/1-kirby-blog/post-template.txt
+CONFLICT (content): Merge conflict in content/2-posts/1-kirby-blog/post-template.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
 ----
 
-Push-status: 0
+Push-status: 1
