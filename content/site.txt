@@ -20,8 +20,6 @@ Copyright: © 2016 Solomon Astley
 
 Pull-message: 
 
-Already up-to-date.
-
 ----
 
-Push-message: 
+Push-message:

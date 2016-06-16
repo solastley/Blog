@@ -43,28 +43,17 @@ kirby()->hook('panel.page.hide', function($page) {UpdateRepo();});
 kirby()->hook('panel.page.move', function($page) {UpdateRepo();});
 
 function UpdateRepo(){
-    error_log("Doing FUCKING ANYTHING1");
-    $Git = kirby()->roots()->plugins() . '/Git/Git.php';
-    require_once($Git);
 
-    $repo_loc = kirby()->roots()->index() . '/.git';
-    $repo = Git::open($repo_loc);
-    $repo->add('*');
-    $repo->commit('automatic commit from updated pane');
-    error_log("Doing FUCKING ANYTHING2");
-    try {
-        $pull_message = $repo->pull('origin', 'master');
-        error_log("Did the pull and got " . $pull_message);
-    }
-    catch (Exception $e) {
-        error_log("Caught an exception:\n");
-        error_log(print_r($e, true));
-    }
-    $push_message = $repo->push('origin', 'master');
-
-    error_log("Doing FUCKING ANYTHING3");
-    error_log($pull_message);
-    error_log($push_message);
+    chdir("/home/astley/GitProjects/Blog");
+    shell_exec("git config user.email 'solastley@gmail.com'");
+    shell_exec("git config user.name 'Solomon Astley'");
+    shell_exec("git config push.default simple");
+    error_log("Doing a git add -A --- " . shell_exec("git add -A") . ' --- ');
+    error_log("Doing a git commit: --- " . shell_exec("git commit -m 'automatic commit from updated panel'") . ' --- ');
+    $pull_message = shell_exec("git pull");
+    error_log("Doing a git pull: --- " . $pull_message . ' --- ');
+    $push_message = shell_exec("git push");
+    error_log("Doing a git push: --- " . $push_message . ' --- ');
 
     site()->update(array(
         'pull_message' => $pull_message,
