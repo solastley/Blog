@@ -22,12 +22,7 @@ return array(
     $conflict_status = false;
     $conflicts = array();
 
-    if (count($filenames) == 0) {
-        site()->update(array(
-            'pull_message' => ''
-        ));
-    }
-    else {
+    if (count($filenames) !== 0) {
         $conflict_status = true;
 
         $temp_index;
