@@ -236,10 +236,10 @@ class GitRepo {
 			}
 		}
 	}
-	
+
 	/**
 	 * Get the path to the git repo directory (eg. the ".git" directory)
-	 * 
+	 *
 	 * @access public
 	 * @return string
 	 */

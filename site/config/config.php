@@ -52,7 +52,13 @@ function UpdateRepo(){
     $repo->add('*');
     $repo->commit('automatic commit from updated pane');
     error_log("Doing FUCKING ANYTHING2");
-    $pull_message = $repo->pull('origin', 'master');
+    try {
+        $pull_message = $repo->pull('origin', 'master');
+        error_log("Did the pull and got " . $pull_message);
+    }
+    catch (Exception $e) {
+        error_log("Caught an exception: " . $e->getMessage() . '\n');
+    }
     $push_message = $repo->push('origin', 'master');
 
     error_log("Doing FUCKING ANYTHING3");
