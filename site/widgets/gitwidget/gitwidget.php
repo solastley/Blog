@@ -13,11 +13,19 @@ return array(
         $lastPos = $lastPos + strlen($target1);
     }
 
+    $target2 = 'CONFLICT (';
+    $lastPos = 0;
+    $end_positions = array();
+    while (($lastPos = strpos($pull_message, $target2, $lastPos)) !== false) {
+        $end_positions[] = $lastPos;
+        $lastPos = $lastPos + strlen($target2);
+    }
+
     $conflict_status = false;
     $filenames = array();
     $conflicts = array();
 
-    if (count($start_positions) == 0) {
+    if (count($start_positions) == 0 || count($end_positions) == 0) {
         site()->update(array(
             'pull_message' => '',
             'push_message' => ''
@@ -25,14 +33,6 @@ return array(
     }
     else {
         $conflict_status = true;
-
-        $target2 = 'CONFLICT (';
-        $lastPos = 0;
-        $end_positions = array();
-        while (($lastPos = strpos($pull_message, $target2, $lastPos)) !== false) {
-            $end_positions[] = $lastPos;
-            $lastPos = $lastPos + strlen($target2);
-        }
 
         $i = 0;
         foreach($start_positions as $start) {
@@ -59,7 +59,7 @@ return array(
                         $pos2 = strpos($lines[$i], '>>>>>>>');
                     }
                     $conflict_message .= $lines[$i];
-                    break;
+                    continue;
                 }
             }
             array_push($conflicts, $conflict_message);
