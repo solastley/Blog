@@ -7,8 +7,8 @@ password: >
 language: en
 role: admin
 history:
+  - posts
   - posts/kirby-blog
   - posts/bs4-scraper
-  - posts
   - olympics
   - home

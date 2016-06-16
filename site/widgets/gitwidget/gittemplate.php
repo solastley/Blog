@@ -42,7 +42,6 @@
         padding: 4px 8px;
     }
 </style>
-<?php echo 'Push status is: ' . $push_status; ?>
 <?php if ($conflict_status): ?>
     <h2 class="bad-merge">Merge conflict(s) found:</h2>
     <form action="<?= page('gitwidget')->url() ?>" method="post" id="conflict-form">
@@ -55,6 +54,10 @@
         <input name="filenames" id="hidden-filename" value='<?php echo base64_encode(serialize($filenames)) ?>'/>
         <input type="submit" name="submit" id="submit-btn" value="Click here to fix" />
     </form>
+<?php elseif ($push_status != '0'): ?>
+    <h2 class="bad-merge">An error occurred while updating the Git repository.<br />
+        Your changes were NOT merged into the source repository.</h2>
 <?php else: ?>
     <h2 class="good-merge">No merge conflicts found.</h2>
+    <h2 class="good-merge">No errors thrown.</h2>
 <?php endif; ?>
