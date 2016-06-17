@@ -5,7 +5,7 @@
     $articles = [];
     array_push($articles, $page->featured_article_1_url());
     array_push($articles, $page->featured_article_2_url());
-
+	
 ?>
 
 <!-- Snippet for HTML head and navbar -->
