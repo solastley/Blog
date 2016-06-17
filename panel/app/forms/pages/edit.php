@@ -40,6 +40,18 @@ return function($page) {
     $form->buttons->cancel = '';    
   }
 
+  // check for untranslatable fields
+  if(panel()->site()->language() != panel()->site()->defaultLanguage()) {
+
+    foreach($form->fields() as $field) {
+      if($field->translate() == false) {
+        $field->readonly = true;
+        $field->disabled = true;
+      }
+    }
+
+  }
+
   return $form;
 
 };

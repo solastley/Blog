@@ -1,7 +1,5 @@
 <?php
 
-class Asset extends AssetAbstract {}
-class Avatar extends AvatarAbstract {}
 class Page extends PageAbstract {}
 class Pages extends PagesAbstract {}
 class Children extends ChildrenAbstract {}

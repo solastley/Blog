@@ -19,13 +19,12 @@ abstract class KirbytextAbstract {
 
   public function __construct($field) {
 
-    if(is_a($field, 'Field')) {
-      $this->field = $field;
-    } else if(is_array($field)) {
-      throw new Exception('Kirbytext cannot handle arrays');
-    } else if(empty($field) or is_string($field)) {
-      $this->field = new Field(page(), null, $field);
+    if(empty($field) or is_string($field)) {
+      $value = $field;
+      $field = new Field(page(), null, $value);
     }
+
+    $this->field = $field;
 
   }
 
@@ -48,10 +47,15 @@ abstract class KirbytextAbstract {
     $text = preg_replace_callback('!(?=[^\]])\([a-z0-9_-]+:.*?\)!is', array($this, 'tag'), $text);
 
     // markdownify
-    $text = kirby::instance()->component('markdown')->parse($text);
+    if(kirby()->option('markdown')) {
+      $text = call(kirby::instance()->option('markdown.parser'), $text);
+    }
 
     // smartypantsify
-    $text = kirby::instance()->component('smartypants')->parse($text);
+    if(kirby()->option('smartypants')) {
+      $text = str_replace('&quot;', '"', $text);
+      $text = call(kirby::instance()->option('smartypants.parser'), $text);
+    }
 
     // post filters
     foreach(static::$post as $filter) {

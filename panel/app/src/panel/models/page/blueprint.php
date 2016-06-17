@@ -12,7 +12,6 @@ use Obj;
 use Kirby\Panel\Models\Page\Blueprint\Pages;
 use Kirby\Panel\Models\Page\Blueprint\Files;
 use Kirby\Panel\Models\Page\Blueprint\Fields;
-use Kirby\Panel\Models\Page\Blueprint\Options;
 
 class Blueprint extends Obj {
 
@@ -30,7 +29,6 @@ class Blueprint extends Obj {
   public $deletable = true;
   public $icon      = 'file-o';
   public $fields    = array();
-  public $options   = null;
 
   public function __construct($name) {
 
@@ -45,7 +43,6 @@ class Blueprint extends Obj {
     $this->type      = a::get($this->yaml, 'type', 'page');
     $this->pages     = new Pages(a::get($this->yaml, 'pages', true));
     $this->files     = new Files(a::get($this->yaml, 'files', true));
-    $this->options   = new Options(a::get($this->yaml, 'options', array()));
 
   }
 
@@ -62,7 +59,7 @@ class Blueprint extends Obj {
     }
 
     // find the matching blueprint file
-    $file = kirby()->get('blueprint', $name);
+    $file = f::resolve(static::$root . DS . $name, array('yml', 'php', 'yaml'));
 
     if($file) {
 
@@ -95,13 +92,13 @@ class Blueprint extends Obj {
   }
 
   static public function exists($name) {
-    return kirby()->get('blueprint', $name) ? true : false;
+    return f::resolve(static::$root . DS . $name, array('yml', 'php', 'yaml')) ? true : false;
   }
 
   static public function all() {
 
     $files  = dir::read(static::$root);
-    $result = array_keys(kirby()->get('blueprint'));
+    $result = array();
     $home   = kirby()->option('home', 'home');
     $error  = kirby()->option('error', 'error');
 

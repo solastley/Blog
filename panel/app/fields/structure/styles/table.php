@@ -3,7 +3,7 @@
     <tr>
       <?php foreach($field->fields() as $f): ?>
       <th>
-        <?php echo html($field->i18n($f['label']), false) ?>
+        <?php echo html($f['label'], false) ?>
       </th>
       <?php endforeach ?>
       <th class="structure-table-options">  
@@ -17,11 +17,7 @@
       <?php foreach($field->fields() as $f): ?>
       <td>
         <a data-modal href="<?php __($field->url($entry->id() . '/update')) ?>">
-          <?php if(!empty($entry->{$f['name']})): ?>
-          <?php echo html($entry->{$f['name']}, false) ?>
-          <?php else: ?>
-          &nbsp;
-          <?php endif ?>
+          <?php echo html(@$entry->{$f['name']}, false) ?>
         </a>
       </td>
       <?php endforeach ?>

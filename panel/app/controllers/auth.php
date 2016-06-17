@@ -6,15 +6,7 @@ class AuthController extends Kirby\Panel\Controllers\Base {
 
   public function login() {
 
-    try {
-      $login = new Login();      
-    } catch(Exception $e) {
-      return $this->layout('base', array(
-        'content' => $this->view('auth/error', array(
-          'error' => $e->getMessage()
-        ))
-      ));
-    }
+    $login = new Login();
 
     if($login->isAuthenticated()) {
       $this->redirect();

@@ -56,14 +56,7 @@ class Uploader {
     $file = $this->move($upload);
 
     // create the initial meta file
-    // without triggering the update hook
-    $file->createMeta(false);
-
-    // make sure that the file is being marked as updated
-    touch($file->root());
-
-    // clean the thumbs folder
-    $this->page->removeThumbs();
+    $file->createMeta();
 
     kirby()->trigger('panel.file.upload', $file);          
 
@@ -82,12 +75,6 @@ class Uploader {
     ));
 
     $file = $this->move($upload);
-
-    // make sure that the file is being marked as updated
-    touch($file->root());
-
-    // clean the thumbs folder
-    $this->page->removeThumbs();
 
     kirby()->trigger('panel.file.replace', $file);
 

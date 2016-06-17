@@ -141,6 +141,11 @@
         ?>
     <?php endforeach; ?>
     makeChart(columns, teams);
+	
+
+    setTimeout(function() {
+	location.reload()
+    }, 60000);
 </script>
 
 <!-- Snipppet for HTML footer and javascripts -->

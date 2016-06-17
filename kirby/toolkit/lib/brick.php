@@ -184,11 +184,7 @@ class Brick {
   }
 
   public function __toString() {
-    try {
-      return $this->toString();      
-    } catch(Exception $e) {
-      return 'Error: ' . $e->getMessage();
-    }
+    return $this->toString();
   }
 
   public static function make($id, $callback) {

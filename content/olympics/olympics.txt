@@ -6,75 +6,75 @@ Text: 2016 Beer Olympics
 
 ----
 
-Team-1-game-1: 100
+Team-1-game-1: 800
 
 ----
 
-Team-1-game-2: 200
+Team-1-game-2: 500
 
 ----
 
-Team-1-game-3: 500
+Team-1-game-3: 800
 
 ----
 
-Team-1-game-4: 300
+Team-1-game-4: 0
 
 ----
 
-Team-1-game-5: 400
+Team-1-game-5: 0
 
 ----
 
-Team-2-game-1: 100
+Team-2-game-1: 1000
 
 ----
 
-Team-2-game-2: 1000
+Team-2-game-2: 700
 
 ----
 
-Team-2-game-3: 500
+Team-2-game-3: 700
 
 ----
 
-Team-2-game-4: 200
+Team-2-game-4: 0
 
 ----
 
-Team-2-game-5: 400
+Team-2-game-5: 0
 
 ----
 
-Team-3-game-1: 600
+Team-3-game-1: 400
 
 ----
 
-Team-3-game-2: 400
+Team-3-game-2: 1000
 
 ----
 
-Team-3-game-3: 800
+Team-3-game-3: 600
 
 ----
 
-Team-3-game-4: 1000
+Team-3-game-4: 0
 
 ----
 
-Team-3-game-5: 600
+Team-3-game-5: 0
 
 ----
 
-Team-4-game-1: 0
+Team-4-game-1: 100
 
 ----
 
-Team-4-game-2: 0
+Team-4-game-2: 500
 
 ----
 
-Team-4-game-3: 0
+Team-4-game-3: 200
 
 ----
 
@@ -86,15 +86,15 @@ Team-4-game-5: 0
 
 ----
 
-Team-5-game-1: 1000
+Team-5-game-1: 500
 
 ----
 
-Team-5-game-2: 0
+Team-5-game-2: 600
 
 ----
 
-Team-5-game-3: 0
+Team-5-game-3: 400
 
 ----
 
@@ -106,15 +106,15 @@ Team-5-game-5: 0
 
 ----
 
-Team-6-game-1: 0
+Team-6-game-1: 600
 
 ----
 
-Team-6-game-2: 0
+Team-6-game-2: 500
 
 ----
 
-Team-6-game-3: 0
+Team-6-game-3: 900
 
 ----
 
@@ -126,15 +126,15 @@ Team-6-game-5: 0
 
 ----
 
-Team-7-game-1: 0
+Team-7-game-1: 200
 
 ----
 
-Team-7-game-2: 0
+Team-7-game-2: 900
 
 ----
 
-Team-7-game-3: 0
+Team-7-game-3: 300
 
 ----
 
@@ -146,15 +146,15 @@ Team-7-game-5: 0
 
 ----
 
-Team-8-game-1: 0
+Team-8-game-1: 900
 
 ----
 
-Team-8-game-2: 0
+Team-8-game-2: 700
 
 ----
 
-Team-8-game-3: 0
+Team-8-game-3: 500
 
 ----
 
@@ -166,15 +166,15 @@ Team-8-game-5: 0
 
 ----
 
-Team-9-game-1: 0
+Team-9-game-1: 300
 
 ----
 
-Team-9-game-2: 0
+Team-9-game-2: 500
 
 ----
 
-Team-9-game-3: 0
+Team-9-game-3: 1000
 
 ----
 
@@ -186,15 +186,15 @@ Team-9-game-5: 0
 
 ----
 
-Team-10-game-1: 0
+Team-10-game-1: 700
 
 ----
 
-Team-10-game-2: 0
+Team-10-game-2: 700
 
 ----
 
-Team-10-game-3: 0
+Team-10-game-3: 100
 
 ----
 
@@ -226,20 +226,20 @@ Team-5: ........Lifeguard
 
 ----
 
-Team-6: Belgium
+Team-6: Purge
 
 ----
 
-Team-7: Winning
+Team-7: Slizz
 
 ----
 
-Team-8: Team 8
+Team-8: Mexico
 
 ----
 
-Team-9: Mexico
+Team-9: CEOs
 
 ----
 
-Team-10: Flip
+Team-10: USA

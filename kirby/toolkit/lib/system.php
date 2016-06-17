@@ -6,7 +6,7 @@
  * Simplifies system (shell) calls
  *
  * @package   Kirby Toolkit
- * @author    Lukas Bestle <lukas@getkirby.com>
+ * @author    Lukas Bestle <lukas@lu-x.me>
  * @link      http://getkirby.com
  * @copyright Lukas Bestle
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License

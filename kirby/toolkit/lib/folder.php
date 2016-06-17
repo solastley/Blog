@@ -346,25 +346,19 @@ class Folder {
    * 
    * @return  int  
    */  
-  public function modified($format = null, $handler = 'date') {
+  public function modified($format = null) {
 
     $modified = filemtime($this->root); 
     $items    = $this->scan(array('.', '..'));
 
     foreach($items AS $item) {      
-
-      if(is_file($this->root . DS . $item)) {
-        $newModified = filemtime($this->root . DS . $item);
-      } else {      
-        $object      = new static($this->root . DS . $item);
-        $newModified = $object->modified();
-      }
-      
-      $modified = ($newModified > $modified) ? $newModified : $modified;
-
+      if(!is_dir($this->root . DS . $item)) continue;
+      $object      = new static($this->root . DS . $item);
+      $newModified = $object->modified();
+      $modified    = ($newModified > $modified) ? $newModified : $modified;
     }
     
-    return !is_null($format) ? $handler($format, $modified) : $modified;
+    return !is_null($format) ? date($format, $modified) : $modified;
 
   }
 

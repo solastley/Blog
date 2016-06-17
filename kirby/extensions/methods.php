@@ -172,19 +172,20 @@ field::$methods['toPage'] = function($field) {
 };
 
 /**
- * Returns all page objects from a yaml list or a $sep separated string in a field
+ * Returns all page objects from a yaml list in a field
  * @param Field $field The calling Kirby Field instance
  * @return Collection
  */
-field::$methods['pages'] = field::$methods['toPages'] = function($field, $sep = null) {
+field::$methods['pages'] = field::$methods['toPages'] = function($field) {
 
-  if($sep !== null) {
-    $array = $field->split($sep);
-  } else {
-    $array = $field->yaml();
+  $related = array();
+
+  foreach($field->yaml() as $r) {
+    // make sure to only add found related pages
+    if($rel = page($r)) $related[$rel->id()] = $rel;
   }
 
-  return $field->site()->pages()->find($array);
+  return new Collection($related);
 
 };
 
