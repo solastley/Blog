@@ -23,6 +23,7 @@ Text:
 ##Introduction
 During the summer of 2016, I worked full-time as a software engineering intern at a company called MAYA Design, located in downtown Pittsburgh, PA. I would call this  not only my first internship, but also my first real job as a developer. Writing this now, I still have trouble believing it. Earlier this spring, by some miracle, I managed to convince these guys that I actually knew what I was doing and land a job. Here's the harsh truth – my only experience as a programmer was my Java data structures class, and the only "development" I had ever done was modify some Twitter Bootstrap templates for static one-page websites. I had a large gap to bridge before I would ever consider calling myself a real full-stack developer.
 
-I'm writing this blog post, now, at the end of the summer of 2016 – my last week at MAYA. Now, finally, I believe I've earned the title. Let me tell you about what I've made.
+I'm writing this blog post, now, at the end of the summer of 2016 – my last week at MAYA. Now, finally, I believe I've earned the title. Let me tell you about what I made.
 
-##
+##Emergency Law Inventory
+Lucky for me, the first project that I was placed on was one that was still in very early stages of development, so I didn't need to spend a ton of time diving into the code base. In fact, the website was pretty much non-existent when I was placed on the team.
