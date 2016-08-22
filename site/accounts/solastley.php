@@ -7,6 +7,7 @@ password: >
 language: en
 role: admin
 history:
+  - posts/internship-2016
   - posts/kirby-blog
   - posts/bs4-scraper
   - home

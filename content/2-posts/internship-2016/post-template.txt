@@ -1,20 +1,20 @@
-Title: Internship 2016
+Title: My Time as a MAYAn
 
 ----
 
-Date: today
+Date: 2016-08-22
 
 ----
 
-Author: 
+Author: Solomon Astley
 
 ----
 
-Tags: 
+Tags: internship,MAYA,intern
 
 ----
 
-Summary: 
+Summary: I describe in detail two of the projects I worked on as a software engineering intern at MAYA Design during the Summer of 2016.
 
 ----
 
