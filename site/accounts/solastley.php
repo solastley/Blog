@@ -9,6 +9,4 @@ role: admin
 history:
   - posts/kirby-blog
   - posts/bs4-scraper
-  - olympics
   - home
-
