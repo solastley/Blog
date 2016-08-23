@@ -45,5 +45,5 @@ It would have been trivial to re-shape our design in order to work properly with
 The thing about D3 is that it pretty much makes you do all of the work. It's essentially just a library that provides some useful functions to apply logic to displaying svg images on the screen. This is great because it means you can essentially create _any_ data visualization you want, and have it be completely customizable. On the other hand, this means that creating a visualization requires quite a lot of work because you have to tell D3 exactly how you want everything to look and function. With a large number of custom visualizations to do, I ended up getting the job done in around 1500 lines of code.
 
 ####The Time-Depth Curve
-(image: time-depth.png)
+(image: time-depth.png width: 200 height: 200)
 I think that this visualization in particular deserves some spotlight.
