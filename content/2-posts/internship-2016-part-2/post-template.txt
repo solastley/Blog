@@ -22,7 +22,7 @@ Text:
 
 If you're not coming here from part one of this pair of blog posts, then here's a quick introduction:
 
-During the summer of 2016, I worked full-time as a software engineering intern at a company called MAYA Design. I met some wonderful people, had some awesome experiences, and learned A LOT about what it means to be a full-stack developer. By the time I was placed on the team for the project I'm about to describe, I had already built a fully-functioning website which would be used by potentially thousands of individuals across the country. Cool. My metaphorical feet were already wet, so I figured now was a good time to jump in to the world of full-stack development.
+During the summer of 2016, I worked full-time as a software engineering intern at a company called MAYA Design. I met some wonderful people, had some awesome experiences, and learned A LOT about what it means to be a full-stack developer. By the time I was placed on the team for the project I'm about to describe, I had already built a fully-functioning website which would be used by potentially thousands of individuals across the country. Cool. My metaphorical feet were already wet, so I figured now was a good time to jump into the world of full-stack development.
 
 ##Transocean Web Dashboard
 
