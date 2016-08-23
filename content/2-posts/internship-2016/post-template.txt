@@ -14,7 +14,7 @@ Tags: internship,MAYA,intern
 
 ----
 
-Summary: I describe in detail two of the projects I worked on as a software engineering intern at MAYA Design during the summer of 2016.
+Summary: I describe in detail the first of two projects I worked on as a software engineering intern at MAYA Design during the summer of 2016.
 
 ----
 
