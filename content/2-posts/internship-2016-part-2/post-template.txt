@@ -38,8 +38,8 @@ For my first project, the emergency law inventory, the PostgreSQL database was a
 
 The other engineer on the project was Mike Boselowitz, a four year veteran at MAYA. Mike and I quickly realized that the queries required to return the data we needed would likely require over five minutes to run. To tackle this problem, we implemented a caching system that would store our already filtered data in another, separate database which could then be queried against much more quickly. We wrote a procedure that would run after some interval of time on the server and refresh this temporary database every so often to keep it up-to-date.
 
-(image: graph1.png)
 ###The Visualizations
+(image: graph1.png)
 It would have been trivial to re-shape our design in order to work properly with some pre-made commercial data visualizations, but then it wouldn't have been a _Transocean_ web dashboard, it would have just been generic. At the start of the project, I knew nothing about graphing and charting in a web browser. On a recommendation from Mike, I decided to look into a JavaScript library called D3, which is widely regarded as being a great library for completely custom data visualizations. After some messing around, I decided that this was definitely the way to go.
 
 The thing about D3 is that it pretty much makes you do all of the work. It's essentially just a library that provides some useful functions to apply logic to displaying svg images on the screen. This is great because it means you can essentially create _any_ data visualization you want, and have it be completely customizable. On the other hand, this means that creating a visualization requires quite a lot of work because you have to tell D3 exactly how you want everything to look and function. With a large number of custom visualizations to do, I ended up getting the job done in around 1500 lines of code.
