@@ -1,4 +1,4 @@
-Title: My Time as a MAYAn
+Title: My Time as a MAYAn (Part 1)
 
 ----
 
@@ -40,7 +40,12 @@ The site itself should be very easy to navigate, guiding the user from start to 
 
 The emergency law inventory home page describes the project to the user to give them some background information, and provides a link to get started. Once clicked, the user is prompted for their profession, location, and state of emergency to filter the laws in the database down to only the relevant ones for this particular person. They can then browse through summaries of these laws (provided by the wonderful law students at the University of Pittsburgh) which are divided up into four categories on the page: Liability, License Reciprocity, Scope of Practice, and Workers' Compensation.
 
+###The Stack
+What's funny is that, coming into this internship, I had never written a single line of PHP, or SQL. I had written some pretty basic JavaScript, but not much,  and I had only just begun messing around with jQuery. The stack for this project is a largely jQuery driven front-end and a PHP back-end which utilizes Kirby CMS and a PostgreSQL database. I also wrote some Python scripts to build the database from scratch, initially using the Google Drive API to get the law information from an input form and spreadsheet that the law students had been filling out. Later on I built an extension to the website which uses simple authorization to allow the law school to continue to add and edit emergency law information as it changes over time.
+
+###The Result
+All things considered, I learned a ton from this project and it was an excellent starting point in my career as a full-stack developer. The project touched many important areas of development, most importantly scalability and usability, and it's something that will actually make a real impact on peoples' lives, which is very important to me.
+
 The website is not live yet because laws are still being added to the database at the time of me writing this, but when it is finished I will provide a link.
 
-###The Stack
-What's funny is that, coming into this internship, I had never written a single line of PHP, or SQL. I had written some pretty basic JavaScript, but not much,  and I had only just begun messing around with jQuery. The stack for this project is a largely jQuery driven front-end user experience with a PHP back-end which utilizes Kirby CMS and a PostgreSQL database.
+(link: internship-2016-part-2 text: Click here) to check out part two of this blog post series and read about my other major project at MAYA Design.
