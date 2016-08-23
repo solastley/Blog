@@ -46,4 +46,4 @@ The thing about D3 is that it pretty much makes you do all of the work. It's ess
 
 ####The Time-Depth Curve
 (image: time-depth.png width: 550 height: 500)
-I think that this visualization in particular deserves some spotlight.
+I think that this visualization in particular deserves some spotlight – a completely interactive time-depth plot of time vs drilling depth for the entire history of a well. When zoomed out, the user can see the entire history of time vs depth, and drag a bar from side to side to see the depth at different dates. When zoomed in, rectangles appear under the curve which represent events that occurred on the rig. When the bar is dragged under these rectangles, they become highlighted and display information above the graph about the event that they represent. All of the data comes straight from the database, and the graph is built entirely with jQuery and D3.js.
