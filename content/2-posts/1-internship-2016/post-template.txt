@@ -48,4 +48,4 @@ All things considered, I learned a ton from this project and it was an excellent
 
 The website is not live yet because laws are still being added to the database at the time of me writing this, but when it is finished I will provide a link.
 
-(link: internship-2016-part-2 text: Click here) to check out part two of this blog post series and read about my other major project at MAYA Design.
+(link: posts/internship-2016-part-2 text: Click here) to check out part two of this blog post series and read about my other major project at MAYA Design.
