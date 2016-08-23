@@ -2,20 +2,31 @@ Title: My Time at MAYA Design (Part 2)
 
 ----
 
-Date: today
+Date: 2016-08-23
 
 ----
 
-Author: 
+Author: Solomon Astley
 
 ----
 
-Tags: 
+Tags: intern,internship,MAYA
 
 ----
 
-Summary: 
+Summary: I describe my second big project at MAYA Design, a web dashboard for the large offshore drilling company – Transocean.
 
 ----
 
 Text: 
+
+If you're not coming here from part one of this pair of blog posts, then here's a quick introduction:
+
+During the summer of 2016, I worked full-time as a software engineering intern at a company called MAYA Design. I met some wonderful people, had some awesome experiences, and learned A LOT about what it means to be a full-stack developer. By the time I was placed on the team for the project I'm about to describe, I had already built a fully-functioning website which would be used by potentially thousands of individuals across the country. Cool. My metaphorical feet were already wet, so I figured now was a good time to jump in to the world of full-stack development.
+
+##Transocean Web Dashboard
+
+Thinking back now, I couldn't have guessed at the start of this project the amount that I would accomplish in such a small time-frame. What I was being asked to do seemed so above my skill-level at the time. Essentially, the task was to build an interactive web dashboard that would serve as a portal for rig managers at Transocean to view and analyze all kinds of data and metrics from their rigs. I took one look at the designs and I thought "Where the hell do I even _begin_?" I counted at least six different types of custom data visualizations, and I don't even know how many unique metrics from a database I knew nothing about. I'll try to break down this beast of a project, one step at a time.
+
+###The Design
+I actually didn't have much to do with the design on this project, and I'm okay with that. The designers at MAYA are such incredible people, and so ridiculously good at their jobs. On this particular project I was working with Nate Bishop, the interim Director of Design at MAYA at the time, and I couldn't have been more fortunate. This guy just _gets_ UI and UX. He would throw new things at me everyday, and all I could think is "How does he do this so quickly?"
