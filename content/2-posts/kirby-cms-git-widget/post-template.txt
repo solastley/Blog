@@ -76,4 +76,4 @@ It's pretty straightforward, but I'll break down what this function is doing. Fi
 ##The Git Widget
 If you've never made any Kirby widgets before, you'll need to make the widgets folder. If so, create a new directory inside your "site" folder called "widgets". Inside this new directory, make a sub-directory called "gitwidget" and create two files in the sub-directory called "gitwidget.php" and "gittemplate.php". The file gitwidget.php will be where we search our global site variables to determine whether or not any merge conflicts have occurred, and get the filenames in which they did. The file gittemplate.php will search these files for the merge conflicts and display them in a custom widget which will be located in your panel dashboard.
 
-The code for these two files is a bit too long for this blog post, so I've put them in a public repository (link:
+The code for these two files is a bit too long for this blog post, so I've put them in a public repository (link: https://github.com/solastley/git-widget text: here).
