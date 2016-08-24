@@ -92,16 +92,6 @@ class Collection extends I {
   }
 
   /**
-   * Checks if an element is in the collection by key. 
-   * 
-   * @param string $key
-   * @return boolean
-   */
-  public function has($key) {
-    return isset($this->data[$key]);
-  }
-
-  /**
    * Returns the last element from the array
    *
    * @return mixed
@@ -427,21 +417,19 @@ class Collection extends I {
   }
 
   /**
-   * Groups the collection by a given callback
+   * Groups the collection by a given field
    *
-   * @param callable $callback
+   * @param string $field
    * @return object A new collection with an item for each group and a subcollection in each group
    */
-  public function group($callback) {
-
-    if (!is_callable($callback)) throw new Exception($callback . ' is not callable. Did you mean to use groupBy()?');
+  public function groupBy($field, $i = true) {
 
     $groups = array();
 
     foreach($this->data as $key => $item) {
 
       // get the value to group by
-      $value = call_user_func($callback, $item);
+      $value = $this->extractValue($item, $field);
 
       // make sure that there's always a proper value to group by
       if(!$value) throw new Exception('Invalid grouping value for key: ' . $key);
@@ -457,6 +445,9 @@ class Collection extends I {
         }
       }
 
+      // ignore upper/lowercase for group names
+      if($i) $value = str::lower($value);
+
       if(!isset($groups[$value])) {
         // create a new entry for the group if it does not exist yet
         $groups[$value] = new static(array($key => $item));
@@ -467,28 +458,7 @@ class Collection extends I {
 
     }
 
-    return new Collection($groups);
-
-  }
-
-  /**
-   * Groups the collection by a given field
-   *
-   * @param string $field
-   * @return object A new collection with an item for each group and a subcollection in each group
-   */
-  public function groupBy($field, $i = true) {
-
-    if (!is_string($field)) throw new Exception('Cannot group by non-string values. Did you mean to call group()?');
-
-    return $this->group(function($item) use ($field, $i) {
-
-      $value = $this->extractValue($item, $field);
-
-      // ignore upper/lowercase for group names
-      return ($i == true) ? str::lower($value) : $value;
-
-    });
+    return new static($groups);
 
   }
 

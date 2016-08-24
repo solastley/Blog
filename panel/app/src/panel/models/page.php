@@ -3,9 +3,7 @@
 namespace Kirby\Panel\Models;
 
 use C;
-use Dir;
 use Exception;
-use F;
 use Obj;
 use S;
 use Str;
@@ -258,27 +256,11 @@ class Page extends \Page {
     }    
   }
 
-  public function canShowPreview() {
-    return $this->blueprint()->options()->preview();
-  }
-
-  public function canChangeStatus() {
-    return (!$this->isErrorPage() and $this->blueprint()->options()->status()) ? true : false;
-  }
-
   public function canChangeUrl() {
-    if($this->isHomePage() or $this->isErrorPage() or $this->blueprint()->options()->url() === false) {
+    if($this->isHomePage() or $this->isErrorPage()) {
       return false;
     } else {
       return true;
-    }
-  }
-
-  public function canChangeTemplate() {
-    if($this->isHomePage() or $this->isErrorPage() or $this->blueprint()->options()->template() === false) {
-      return false;
-    } else {
-      return $this->parent()->blueprint()->pages()->template()->count() > 1;
     }
   }
 
@@ -305,9 +287,6 @@ class Page extends \Page {
 
     $this->changes()->update($changes);
 
-    // remove all thumbs for the old id
-    $old->removeThumbs();
-
     // hit the hook
     kirby()->trigger('panel.page.move', array($this, $old));
   
@@ -327,22 +306,10 @@ class Page extends \Page {
       return $this->num();
     }
 
-    // don't sort pages without permission to change the status
-    if($this->isInvisible() && !$this->canChangeStatus()) {
-      return false;      
-    }
+    $this->sorter()->to($to);
 
-    // store the old number
-    $oldNum = $this->num();
-
-    // run the sorter
-    $this->sorter()->to($to);    
-
-    // run the hook if the number changed
-    if($oldNum != $this->num()) {
-      // hit the hook
-      kirby()->trigger('panel.page.sort', $this);
-    }
+    // hit the hook
+    kirby()->trigger('panel.page.sort', $this);
 
     return $this->num();
 
@@ -353,16 +320,9 @@ class Page extends \Page {
   }
 
   public function hide() {
-
-    // don't hide pages, which are not allowed to change their status
-    if(!$this->canChangeStatus()) {
-      return false;
-    }
-
     parent::hide();
     $this->sorter()->hide();
     kirby()->trigger('panel.page.hide', $this);
-
   }
 
   public function toggle($position) {
@@ -395,7 +355,7 @@ class Page extends \Page {
       $error = 'pages.delete.error.error';
     } else if($this->hasChildren()) {
       $error = 'pages.delete.error.children';
-    } else if(!$this->blueprint()->deletable() or !$this->blueprint()->options()->delete()) {
+    } else if(!$this->blueprint()->deletable()) {
       $error = 'pages.delete.error.blocked';
     } else {
       return true;
@@ -445,14 +405,11 @@ class Page extends \Page {
     
     parent::update($data, $lang);
 
-    // update the number if the date field
-    // changed for example
     $this->updateNum();
+    $this->updateUid();
+    $this->addToHistory();
 
     kirby()->trigger('panel.page.update', $this);
-
-    // add the page to the history
-    $this->addToHistory();
 
   }
 
@@ -470,9 +427,6 @@ class Page extends \Page {
 
     // remove unsaved changes
     $this->changes()->discard();
-
-    // delete all associated thumbs
-    $this->removeThumbs();
 
     // hit the hook
     kirby()->trigger('panel.page.delete', $this);
@@ -496,33 +450,17 @@ class Page extends \Page {
     if($this->isInvisible()) {
       return '—';
     } else {
-
-      $numberSettings = $this->parent()->blueprint()->pages()->num();
-
-      switch($numberSettings->mode()) {
+      switch($this->parent()->blueprint()->pages()->num()->mode()) {
         case 'zero':
-          if($numberSettings->display()) {
-            // customer number display
-            return $this->{$numberSettings->display()}();
-          } else {
-            // alphabetic display numbers
-            return str::substr($this->title(), 0, 1);            
-          }
+          return str::substr($this->title(), 0, 1);
           break;
         case 'date':
-          return $this->date($numberSettings->display(), $numberSettings->field());
+          return date('Y/m/d', strtotime($this->num()));
           break;
         default:
-          if($numberSettings->display()) {
-            // customer number display
-            return $this->{$numberSettings->display()}();
-          } else {
-            // regular number display
-            return intval($this->num());              
-          }
+          return intval($this->num());
           break;
       }
-
     }
 
   }
@@ -544,101 +482,6 @@ class Page extends \Page {
       'language'  => $this->site()->language(),
     ));
 
-  }
-
-  public function changeTemplate($newTemplate) {
-
-    $oldTemplate = $this->intendedTemplate();
-
-    if($newTemplate == $oldTemplate) return true;
-
-    if($this->site()->multilang()) {
-      
-      foreach($this->site()->languages() as $lang) {
-        $old = $this->textfile(null, $lang->code());
-        $new = $this->textfile($newTemplate, $lang->code());
-        f::move($old, $new);
-        $this->reset();
-        $this->updateForNewTemplate($oldTemplate, $newTemplate, $lang->code());
-      }
-
-    } else {
-      $old = $this->textfile();      
-      $new = $this->textfile($newTemplate);
-      f::move($old, $new);
-      $this->reset();
-      $this->updateForNewTemplate($oldTemplate, $newTemplate);
-    }
-
-    return true;
-
-  }
-
-  public function prepareForNewTemplate($oldTemplate, $newTemplate, $language = null) {
-
-    $data         = array();
-    $incompatible = array();
-    $content      = $this->content($language);
-    $oldBlueprint = new Blueprint($oldTemplate);
-    $oldFields    = $oldBlueprint->fields($this);
-    $newBlueprint = new Blueprint($newTemplate);
-    $newFields    = $newBlueprint->fields($this);
-
-    // log
-    $removed  = array();
-    $replaced = array();
-    $added    = array();
-
-    // first overwrite everything
-    foreach($oldFields as $oldField) {
-      $data[$oldField->name()] = null;    
-    }
-
-    // now go through all new fileds and compare them to the old field types
-    foreach($newFields as $newField) {
-
-      $oldField = $oldFields->{$newField->name()};
-
-      // only take data from fields with matching names and types
-      if($oldField and $oldField->type() == $newField->type()) {
-        $data[$newField->name()] = $content->get($newField->name())->value();
-      } else {
-        $data[$newField->name()] = $newField->default();
-
-        if($oldField) {
-          $replaced[$newField->name()] = $newField->label();          
-        } else {
-          $added[$newField->name()] = $newField->label();          
-        }
-
-      }
-
-    }
-
-    foreach($data as $name => $content) {
-      if(is_null($content)) $removed[$name] = $oldFields->{$name}->label();
-    }
-
-    return array(
-      'data'     => $data,
-      'removed'  => $removed,
-      'replaced' => $replaced,
-      'added'    => $added
-    );
-
-  }
-
-  public function updateForNewTemplate($oldTemplate, $newTemplate, $language = null) {
-    $prep = $this->prepareForNewTemplate($oldTemplate, $newTemplate, $language);
-    $this->update($prep['data'], $language);
-  }
-
-  /**
-   * Clean the thumbs folder for the page
-   * 
-   */
-  public function removeThumbs() {
-    return dir::remove($this->kirby()->roots()->thumbs() . DS . $this->id());
   }
 
 }

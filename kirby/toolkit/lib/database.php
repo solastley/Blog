@@ -37,10 +37,6 @@ class Database {
   // the PDO query statement
   protected $statement;
 
-  // whitelists for tables and their columns
-  protected $tableWhitelist;
-  protected $columnWhitelist = array();
-
   // the number of affected rows for the last query
   protected $affected;
 
@@ -97,7 +93,6 @@ class Database {
   public function connect($params = null) {
 
     $defaults = array(
-      'database' => null,
       'type'     => 'mysql',
       'prefix'   => null,
       'user'     => null,
@@ -107,11 +102,10 @@ class Database {
 
     $options = array_merge($defaults, $params);
 
-    // store the database information
-    $this->database = $options['database'];
-    $this->type     = $options['type'];
-    $this->prefix   = $options['prefix'];
-    $this->id       = $options['id'];
+    // store the type and prefix
+    $this->type   = $options['type'];
+    $this->prefix = $options['prefix'];
+    $this->id     = $options['id'];
 
     if(!isset(static::$connectors[$this->type])) {
       throw new Exception('Invalid database connector: ' . $this->type);
@@ -123,7 +117,6 @@ class Database {
     // try to connect
     $this->connection = new PDO($this->dsn, $options['user'], $options['password']);
     $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $this->connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
     // store the connection
     static::$connections[$this->id] = $this;
@@ -172,7 +165,6 @@ class Database {
 
   /**
    * Escapes a value to be used for a safe query
-   * NOTE: Prepared statements using bound parameters are more secure and solid
    *
    * @param string $value
    * @return string
@@ -352,58 +344,6 @@ class Database {
   }
 
   /**
-   * Checks if a table exists in the current database
-   *
-   * @param string $table
-   * @return boolean
-   */
-  public function validateTable($table) {
-    if(!$this->tableWhitelist) {
-      // Get the table whitelist from the database
-      $sql     = new SQL($this);
-      $query   = $sql->tableList($this->database);
-      $results = $this->query($query, $sql->bindings($query));
-      
-      if($results) {
-        $this->tableWhitelist = $results->pluck('name');
-      } else {
-        return false;
-      }
-    }
-    
-    return in_array($table, $this->tableWhitelist);
-  }
-  
-  /**
-   * Checks if a column exists in a specified table
-   *
-   * @param string $table
-   * @param string $column
-   * @return boolean
-   */
-  public function validateColumn($table, $column) {
-    if(!isset($this->columnWhitelist[$table])) {
-      if(!$this->validateTable($table)) {
-        $this->columnWhitelist[$table] = array();
-        return false;
-      }
-      
-      // Get the column whitelist from the database
-      $sql     = new SQL($this);
-      $query   = $sql->columnList($this->database, $table);
-      $results = $this->query($query, $sql->bindings($query));
-      
-      if($results) {
-        $this->columnWhitelist[$table] = $results->pluck('name');
-      } else {
-        return false;
-      }
-    }
-    
-    return in_array($column, $this->columnWhitelist[$table]);
-  }
-
-  /**
    * Creates a new table
    *
    * @param string $table
@@ -416,9 +356,7 @@ class Database {
     $queries = str::split($query, ';');
 
     foreach($queries as $query) {
-      $query = trim($query);
-      
-      if(!$this->execute($query, $sql->bindings($query))) return false;
+      if(!$this->execute($query)) return false;
     }
 
     return true;
@@ -432,9 +370,8 @@ class Database {
    * @return boolean
    */
   public function dropTable($table) {
-    $sql   = new SQL($this);
-    $query = $sql->dropTable($table);
-    return $this->execute($query, $sql->bindings($query));
+    $sql = new SQL($this);
+    return $this->execute($sql->dropTable($table));
   }
 
   /**

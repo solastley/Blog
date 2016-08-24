@@ -44,7 +44,8 @@ function makeChart(scores, teams) {
         var tick = {};
         var $width = $(window).width();
         if ($width < 480) {
-            tick["values"] = [0, 1000, 2000, 3000, 4000];
+           // tick["values"] = [0, 1000, 2000, 3000, 4000];
+	    tick["count"] = 5;
         }
 
         var games = ['Bucket Chug', 'Beer Pong', 'Flip Cup', 'Beer Ball', 'Game Five'];

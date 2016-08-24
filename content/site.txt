@@ -18,10 +18,10 @@ Copyright: © 2016 Solomon Astley
 
 ----
 
-Pull-message: 
-
-Already up-to-date.
+Push-status: 0
 
 ----
 
-Push-status: 0
+Pull-message: 
+
+Already up-to-date.

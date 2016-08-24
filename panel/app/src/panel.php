@@ -33,7 +33,7 @@ use Kirby\Panel\Models\Page\Blueprint as PageBlueprint;
 
 class Panel {
 
-  static public $version = '2.3.0';
+  static public $version = '2.2.3';
 
   // minimal requirements
   static public $requires = array(
@@ -120,12 +120,6 @@ class Panel {
       'default' => $this->roots->fields,
       'custom'  => $this->kirby->roots()->fields()
     );
-
-    // force ssl if set in config 
-    if($this->kirby->option('ssl') and !r::secure()) {
-      // rebuild the current url with https
-      go(url::build(array('scheme' => 'https')));
-    }
 
     // load all available routes
     $this->routes = array_merge($this->routes, require($this->roots->config . DS . 'routes.php'));
@@ -342,15 +336,12 @@ class Panel {
 
     if(!is_null($this->translation)) return $this->translation;
 
-    // get the default language code from the options
-    $lang = $this->kirby()->option('panel.language', 'en');
-    $user = $this->site()->user();
-
-    if($user && $user->language()) {
-      $lang = $user->language();
+    // load the interface language file
+    if($user = $this->site()->user()) {
+      return $this->translation = new Translation($this, $user->language());
+    } else {
+      return $this->translation = new Translation($this, $this->kirby()->option('panel.language', 'en'));
     }
-
-    return $this->translation = new Translation($this, $lang);
 
   }
 
@@ -474,17 +465,14 @@ class Panel {
       $key = null;
     }
 
+    $localhosts = array('::1', '127.0.0.1', '0.0.0.0');
+
     return new Obj(array(
       'key'   => $key,
-      'local' => $this->isLocal(),
+      'local' => (in_array(server::get('SERVER_ADDR'), $localhosts) or server::get('SERVER_NAME') == 'localhost'),
       'type'  => $type,
     ));
 
-  }
-
-  public function isLocal() {
-    $localhosts = array('::1', '127.0.0.1', '0.0.0.0');
-    return (in_array(server::get('SERVER_ADDR'), $localhosts) || server::get('SERVER_NAME') == 'localhost');
   }
 
   public function notify($text) {

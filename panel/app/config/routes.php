@@ -150,14 +150,6 @@ return array(
     'method'  => 'POST|GET'
   ),
 
-  // Template Modal
-  array(
-    'pattern' => 'pages/(:all)/template',
-    'action'  => 'PagesController::template',
-    'filter'  => 'auth',
-    'method'  => 'POST|GET'
-  ),
-
   // Toggle visibility
   array(
     'pattern' => 'pages/(:all)/toggle',

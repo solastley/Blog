@@ -7,8 +7,8 @@ password: >
 language: en
 role: admin
 history:
+  - posts/internship-2016-part-2
+  - posts/internship-2016
   - posts/kirby-blog
-  - posts
   - posts/bs4-scraper
-  - olympics
   - home

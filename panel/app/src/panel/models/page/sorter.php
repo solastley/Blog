@@ -48,10 +48,9 @@ class Sorter {
       // get the date
       $date = $sibling->date($this->params->format(), $this->params->field());
 
-      // take the current date if the date is missing
+      // take the current date if the 
       if(!$date) {
-        $handler = kirby()->option('date.handler');
-        $date    = $handler($this->params->format());
+        $date = date($this->params->format());
       }
 
       $sibling->_sort($date);

@@ -2,8 +2,6 @@
 
 namespace Kirby\Panel;
 
-use F;
-
 class Upload extends \Upload {
 
   protected function messages() {

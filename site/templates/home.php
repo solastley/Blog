@@ -5,7 +5,7 @@
     $articles = [];
     array_push($articles, $page->featured_article_1_url());
     array_push($articles, $page->featured_article_2_url());
-
+	
 ?>
 
 <!-- Snippet for HTML head and navbar -->
@@ -13,7 +13,7 @@
 
 <!-- Snippet for hero banner -->
 <?php snippet('banner',
-    array('title' => 'SOBLOGMON', 'subtitle' => 'Apples, Tutorials, Thoughts')); ?>
+    array('title' => 'SOBLOGMON', 'subtitle' => 'Projects, Tutorials, Thoughts')); ?>
 
 <!-- Main Content -->
   <div class="container">
