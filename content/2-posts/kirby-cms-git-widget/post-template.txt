@@ -77,3 +77,12 @@ It's pretty straightforward, but I'll break down what this function is doing. Fi
 If you've never made any Kirby widgets before, you'll need to make the widgets folder. If so, create a new directory inside your "site" folder called "widgets". Inside this new directory, make a sub-directory called "gitwidget" and create two files in the sub-directory called "gitwidget.php" and "gittemplate.php". The file gitwidget.php file will be where we search our global site variables to determine whether or not any merge conflicts have occurred, and get the filenames in which they occurred. The file gittemplate.php will search these files for the merge conflicts and display them in a custom widget which will be located in your panel dashboard.
 
 The code for these two files is a bit too long for this blog post, so I've put them in a public repository (link: https://github.com/solastley/git-widget text: here).
+
+Under normal circumstances, when there are no merge conflicts, the git widget will appear on your dashboard and look like this:
+(image: gitwidget_good.png height: 200 width: 500)
+However, if a merge conflict were to occur, then the widget would inform the user of the conflict and display it, like this:
+(image gitwidget_bad.png height: 200 width: 500)
+When would this occur? If there are multiple users editing content in the Kirby panel for a project and they save their changes one after the other, a merge conflict arises. There are several Kirby CMS Automatic Git widgets available as of recently, but I am not sure any of them actually informs the user if a merge conflict has occurred and helps them fix it.
+
+With this git widget, if a merge conflict occurs, the user can click on the "Click here to fix" button to be directed to a new page. Once there, they can directly edit the lines from the files in which the merge conflicts occurred. That page will look something like this:
+(image: gittemplate.png height: 400 width: 400)
