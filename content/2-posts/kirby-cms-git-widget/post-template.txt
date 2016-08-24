@@ -2,20 +2,42 @@ Title: Kirby CMS Git Widget
 
 ----
 
-Date: today
+Date: 2016-08-24
 
 ----
 
-Author: 
+Author: Solomon Astley
 
 ----
 
-Tags: 
+Tags: Git,Kirby CMS,Widget
 
 ----
 
-Summary: 
+Summary: I walk through how to make a custom widget for the Kirby CMS which automatically pushes file changes in the panel to a Git repository and facilitates the resolution of merge conflicts.
 
 ----
 
 Text: 
+
+##The Git Widget
+
+The panel for Kirby CMS is, in my personal opinion, one of its best features. The UI is really easy to use, and pleasantly customizable. One issue that I have found, though, is there's no easy way to automatically update the Git repository for your project when changes are made in the panel. In one of the more recent versions of Kirby came the release of a new feature called "Kirby hooks." These hooks are essentially functions that watch for changes in the panel and execute when they occur. Check out the documentation for Kirby hooks (link: https://getkirby.com/docs/developer-guide/advanced/hooks text: here).
+
+With Kirby hooks, it's pretty simple to execute some shell commands that do a git add, git commit, git push every time the panel is updated, but that creates a potential problem – how do you handle merge conflicts? Also fairly new to Kirby CMS are custom widgets, which are essentially snippets of PHP and HTML that you can place on your Kirby dashboard. Using these two features I've created a "Git Widget" which checks for merge conflicts after some Kirby hooks are executed, and then allows the user to solve those merge conflicts, all in the browser. Here's how I did it.
+
+##Setting Up the Kirby Hooks
+As per the Kirby documentation, you can place Kirby hooks in a plugin file or right in the config.php file. For our Git Widget, we're going to place the hooks inside the config.php file. Inside config.php, we will paste the following lines of code:
+
+```
+kirby()->hook('panel.page.create', function($page) { UpdateRepo(); });
+kirby()->hook('panel.page.update', function($page) { UpdateRepo(); });
+kirby()->hook('panel.page.delete', function($page) { UpdateRepo(); });
+kirby()->hook('panel.page.sort', function($page) { UpdateRepo(); });
+kirby()->hook('panel.page.hide', function($page) { UpdateRepo(); });
+kirby()->hook('panel.page.move', function($page) { UpdateRepo(); });
+
+function UpdateRepo(){
+    git_update();
+}
+```

@@ -24,7 +24,4 @@ Push-status: 0
 
 Pull-message: 
 
-Updating dd3e627..52c1533
-Fast-forward
- site/snippets/header.php | 8 ++++++++
- 1 file changed, 8 insertions(+)
+Already up-to-date.
