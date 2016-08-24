@@ -24,6 +24,4 @@ Push-status: 0
 
 Pull-message: 
 
-Merge made by the 'recursive' strategy.
- content/2-posts/1-kirby-blog/post-template.txt | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Already up-to-date.
