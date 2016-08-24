@@ -10,7 +10,7 @@ Featured-article-2-url: bs4-scraper
 
 ----
 
-Featured-article-3-url: fake-post-2
+Featured-article-3-url: kirby-cms-git-widget
 
 ----
 
