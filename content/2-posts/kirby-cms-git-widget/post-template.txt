@@ -86,3 +86,4 @@ When would this occur? If there are multiple users editing content in the Kirby 
 
 With this git widget, if a merge conflict occurs, the user can click on the "Click here to fix" button to be directed to a new page. Once there, they can directly edit the lines from the files in which the merge conflicts occurred. That page will look something like this:
 (image: gittemplate.png height: 500 width: 560)
+Of course, we'll need the code for this page, which I've provided in the same Github repository as the git widget code, located (link: https://github.com/solastley/git-widget text: here). In summary, the page contains a form that allows the user to manually edit the merge conflicts and then a PHP script which executes upon submission of the form. The script visits each of the conflicted files and makes the changes as per the user's form edits, and then calls the git_update function from before to attempt to push the fixed file changes.
