@@ -18,12 +18,10 @@ Copyright: © 2016 Solomon Astley
 
 ----
 
-Push-status: 1
+Push-status: 0
 
 ----
 
 Pull-message: 
 
-Auto-merging content/2-posts/1-kirby-blog/post-template.txt
-CONFLICT (content): Merge conflict in content/2-posts/1-kirby-blog/post-template.txt
-Automatic merge failed; fix conflicts and then commit the result.
+Already up-to-date.
