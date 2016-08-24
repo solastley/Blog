@@ -41,3 +41,34 @@ function UpdateRepo(){
     git_update();
 }
 ```
+
+Each of the first six lines is using a Kirby hook to register a panel event to some action. For example, the first three hooks are saying, "When a new page is created, a page is updated, or a page is deleted in the panel, execute the 'UpdateRepo' function." The UpdateRepo function then calls another function, git_update, which will be located in our plugins folder. Let's write that function.
+
+##The Git Plugin
+According to the documentation, Kirby plugin files should be located inside a folder located in the "plugins" directory that shares the same name with the plugin file itself. So, we'll make a new directory in the plugins folder called "git" and create a new file in the git directory called "git.php". Inside git.php, we'll include our git_update function that our Kirby hooks are calling. The git.php file will look something like this:
+
+```
+<?php
+function git_update() {
+    $index_dir = kirby()->roots()->index();
+    chdir($index_dir);
+
+    shell_exec("git config user.email 'your_email_here'");
+    shell_exec("git config user.name 'your_name_here'");
+    shell_exec("git config push.default simple");
+    shell_exec("git add -A");
+    shell_exec("git commit -m 'automatic commit from updated panel'");
+
+    $pull_message = shell_exec("git pull");
+
+    exec("git push", $out, $status);
+
+    site()->update(array(
+        'pull_message' => $pull_message,
+        'push_status' => $status
+    ));
+}
+?>
+```
+
+It's pretty straightforward, but I'll break down what this function is doing. First it changes the working directory to be the root directory of the project folder, and then executes some shell commands which set up the git configuration for your user and attempt to do a git pull/git push to the git repository. It stores the output from these commands in two variables, $pull_message and $status. It then updates the global site variables "pull_message" and "push_status" with those two variables.
