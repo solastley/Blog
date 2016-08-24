@@ -53,3 +53,4 @@ I think that this visualization in particular deserves some spotlight – a comp
 (image: time-depth.png width: 550 height: 500)
 
 ##Conclusion
+All things considered, I couldn't be happier with my internship at MAYA Design. I went in with virtually no expectations, so the amount I've improved as a developer over the past three and a half months is incredibly satisfying. I helped create two fully-functional, meaningful websites with two very different stacks. I also formed a lot of close relationships with the great people here at MAYA. There's not much more to ask for from a summer internship experience.
