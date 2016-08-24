@@ -1,0 +1,79 @@
+Title: Kirby CMS Git Widget
+
+----
+
+Date: 2016-08-24
+
+----
+
+Author: Solomon Astley
+
+----
+
+Tags: Git,Kirby CMS,Widget
+
+----
+
+Summary: I walk through how to make a custom widget for the Kirby CMS which automatically pushes file changes in the panel to a Git repository and facilitates the resolution of merge conflicts.
+
+----
+
+Text: 
+
+##The Git Widget
+
+The panel for Kirby CMS is, in my personal opinion, one of its best features. The UI is really easy to use, and pleasantly customizable. One issue that I have found, though, is there's no easy way to automatically update the Git repository for your project when changes are made in the panel. In one of the more recent versions of Kirby came the release of a new feature called "Kirby hooks." These hooks are essentially functions that watch for changes in the panel and execute when they occur. Check out the documentation for Kirby hooks (link: https://getkirby.com/docs/developer-guide/advanced/hooks text: here).
+
+With Kirby hooks, it's pretty simple to execute some shell commands that do a git add, git commit, git push every time the panel is updated, but that creates a potential problem – how do you handle merge conflicts? Also fairly new to Kirby CMS are custom widgets, which are essentially snippets of PHP and HTML that you can place on your Kirby dashboard. Using these two features I've created a "Git Widget" which checks for merge conflicts after some Kirby hooks are executed, and then allows the user to solve those merge conflicts, all in the browser. Here's how I did it.
+
+##Setting Up the Kirby Hooks
+As per the Kirby documentation, you can place Kirby hooks in a plugin file or right in the config.php file. For our Git Widget, we're going to place the hooks inside the config.php file. Inside config.php, we will paste the following lines of code:
+
+```
+kirby()->hook('panel.page.create', function($page) { UpdateRepo(); });
+kirby()->hook('panel.page.update', function($page) { UpdateRepo(); });
+kirby()->hook('panel.page.delete', function($page) { UpdateRepo(); });
+kirby()->hook('panel.page.sort', function($page) { UpdateRepo(); });
+kirby()->hook('panel.page.hide', function($page) { UpdateRepo(); });
+kirby()->hook('panel.page.move', function($page) { UpdateRepo(); });
+
+function UpdateRepo(){
+    git_update();
+}
+```
+
+Each of the first six lines is using a Kirby hook to register a panel event to some action. For example, the first three hooks are saying, "When a new page is created, a page is updated, or a page is deleted in the panel, execute the 'UpdateRepo' function." The UpdateRepo function then calls another function, git_update, which will be located in our plugins folder. Let's write that function.
+
+##The Git Plugin
+According to the documentation, Kirby plugin files should be located inside a folder located in the "plugins" directory that shares the same name with the plugin file itself. So, we'll make a new directory in the plugins folder called "git" and create a new file in the git directory called "git.php". Inside git.php, we'll include our git_update function that our Kirby hooks are calling. The git.php file will look something like this:
+
+```
+<?php
+function git_update() {
+    $index_dir = kirby()->roots()->index();
+    chdir($index_dir);
+
+    shell_exec("git config user.email 'your_email_here'");
+    shell_exec("git config user.name 'your_name_here'");
+    shell_exec("git config push.default simple");
+    shell_exec("git add -A");
+    shell_exec("git commit -m 'automatic commit from updated panel'");
+
+    $pull_message = shell_exec("git pull");
+
+    exec("git push", $out, $status);
+
+    site()->update(array(
+        'pull_message' => $pull_message,
+        'push_status' => $status
+    ));
+}
+?>
+```
+
+It's pretty straightforward, but I'll break down what this function is doing. First it changes the working directory to be the root directory of the project folder, and then executes some shell commands which set up the git configuration for your user (Note that this file will want to be added to a .gitignore so each user of the application can have their own user info here). It then attempts to do a git pull/git push to the git repository. It stores the output from these commands in two variables, $pull_message and $status. It then updates the global site variables "pull_message" and "push_status" with those two variables. We now have two global variables that contain the output from our attempted git pull and git push commands that will tell us whether or not a merge conflict has occurred. We can access these variables from the panel inside a custom widget. Let's build that widget.
+
+##The Git Widget
+If you've never made any Kirby widgets before, you'll need to make the widgets folder. If so, create a new directory inside your "site" folder called "widgets". Inside this new directory, make a sub-directory called "gitwidget" and create two files in the sub-directory called "gitwidget.php" and "gittemplate.php". The file gitwidget.php file will be where we search our global site variables to determine whether or not any merge conflicts have occurred, and get the filenames in which they occurred. The file gittemplate.php will search these files for the merge conflicts and display them in a custom widget which will be located in your panel dashboard.
+
+The code for these two files is a bit too long for this blog post, so I've put them in a public repository (link: https://github.com/solastley/git-widget text: here).
