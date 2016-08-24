@@ -14,9 +14,9 @@ Tags: blog,Kirby CMS,PHP
 
 ----
 
-Text:
+Text: 
 
-##Introducti
+##Introducties
 I'm writing a blog post for my Kirby CMS blog about how to make a Kirby CMS blog. Pretty meta, I know. This post is meant for beginners and will cover everything from downloading and installing Apache and PHP to actually working with Kirby CMS. If you've used an Apache server before, you can likely skip the first few sections because you're only interested in how to use Kirby.
 
 So here's the thing about Kirby - it's a great database-less CMS that's super easy to use once you're all set up and you know what you're doing, but the documentation isn't great in a lot of areas. Without a friend to help you out, it can take a while to get everything working and to understand a lot of the cool features of Kirby. Most likely, a lot of your time will be spent aimlessly searching the darkest corners of Google while cursing the developers under your breath. Well lucky for you, I already went through all of that so that you all don't have to.
