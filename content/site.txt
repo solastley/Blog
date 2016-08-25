@@ -18,10 +18,12 @@ Copyright: © 2016 Solomon Astley
 
 ----
 
-Push-status: 0
+Push-status: 1
 
 ----
 
 Pull-message: 
 
-Already up-to-date.
+Auto-merging content/home/home.txt
+CONFLICT (content): Merge conflict in content/home/home.txt
+Automatic merge failed; fix conflicts and then commit the result.
