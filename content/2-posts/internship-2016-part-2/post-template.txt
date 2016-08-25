@@ -43,14 +43,14 @@ The other engineer on the project was Michael Boselowitz, a four year veteran at
 Despite this caching system, we still weren't quite comfortable with the load times of our web pages, so some further optimization was necessary. This optimization ultimately came in the form of speedier SQL queries. When writing SQL, it's usually trivial to select a superset of the data that you actually need, and then parse that data on the server. This is okay sometimes, when the data set is relatively small, but not in our case. As a result, we needed to improve our queries, selecting _only_ the data we needed for each individual web page. Due to the complexity of the ODC database, this was definitely not a simple process. In fact, some of the SQL queries we used to refresh the tables in our temporary database were over a hundred lines long. Did I mention I had never used SQL Server before this project?
 
 ###The Visualizations
-(image: graph1.png width: 400 height: 400)
+(image: graph1.png width: 65% height: auto)
 It would have been trivial to re-shape our design in order to work properly with some pre-made commercial data visualizations, but then it wouldn't have been a _ODC_ web dashboard, it would have just been generic web dashboard. On a recommendation from Mike, I decided to look into a JavaScript library called D3, which is widely regarded as being a great library for completely custom data visualizations. After some messing around, I decided that this was definitely the way to go.
 
 The thing about D3 is that it pretty much makes you do all of the work. It's essentially just a library that provides some useful functions to apply logic to displaying svg images on the screen. This is great because it means you can essentially create _any_ data visualization you want, completely customized. On the other hand, this means that creating a visualization requires quite a lot of work because you have to tell D3 exactly how you want everything to look and function. With a large number of custom visualizations to do, I ended up getting the job done in around 1500 lines of code.
 
 ####The Time-Depth Curve
 I think that this visualization in particular deserves some spotlight – a completely interactive time-depth plot of time vs drilling depth for the entire history of a well. When zoomed out, the user can see the entire history of time vs depth, and drag a bar from side to side to see the depth at different dates. When zoomed in, rectangles appear under the curve which represent events that occurred on the rig. When the bar is dragged under these rectangles, they become highlighted and display information above the graph about the event that they represent. All of the data comes straight from the database, and the graph is built entirely with jQuery and D3.js.
-(image: time-depth.png width: 550 height: 500)
+(image: time-depth.png width: 70% height: auto)
 
 ##Conclusion
 All things considered, I couldn't be happier with my internship at MAYA Design. I went in with virtually no expectations, so the amount I've improved as a developer over the past three and a half months is incredibly satisfying. I helped create two fully-functional, meaningful websites with two very different stacks. I also formed a lot of close relationships with the great people here at MAYA. There's not much more to ask for from a summer internship experience.
