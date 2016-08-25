@@ -87,7 +87,7 @@ However, if a merge conflict were to occur, then the widget would inform the use
 When would this occur? If there are multiple users editing content in the Kirby panel for a project and they save their changes one after the other, a merge conflict arises. There are several Kirby CMS Automatic Git widgets available as of recently, but I am not sure any of them actually informs the user if a merge conflict has occurred and helps them fix it.
 
 With this git widget, if a merge conflict occurs, the user can click on the "Click here to fix" button to be directed to a new page. Once there, they can directly edit the lines from the files in which the merge conflicts occurred. That page will look something like this:
-(image: gittemplate.png height: auto width: 65%)
+(image: gittemplate.png height: auto width: 70%)
 Of course, we'll need the code for this page, which I've provided in the same Github repository as the git widget code, located (link: https://github.com/solastley/git-widget text: here). In summary, the page contains a form that allows the user to manually edit the merge conflicts and then a PHP script which executes upon submission of the form. The script visits each of the conflicted files and makes the changes as per the user's form edits, and then calls the git_update function from before to attempt to push the fixed file changes. If all goes well then the dashboard should display a pleasant green message saying that there are no merge conflicts.
 
 ##Conclusion
