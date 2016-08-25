@@ -81,9 +81,9 @@ If you've never made any Kirby widgets before, you'll need to make the widgets f
 The code for these two files is a bit too long for this blog post, so I've put them in a public repository (link: https://github.com/solastley/git-widget text: here).
 
 Under normal circumstances, when there are no merge conflicts, the git widget will appear on your dashboard and look like this:
-(image: gitwidget_good.png height: 150 width: 60%)
+(image: gitwidget_good.png height: 150 width: 65%)
 However, if a merge conflict were to occur, then the widget would inform the user of the conflict and display it, like this:
-(image: gitwidget_bad.png height: 270 width: 60%)
+(image: gitwidget_bad.png height: 270 width: 65%)
 When would this occur? If there are multiple users editing content in the Kirby panel for a project and they save their changes one after the other, a merge conflict arises. There are several Kirby CMS Automatic Git widgets available as of recently, but I am not sure any of them actually informs the user if a merge conflict has occurred and helps them fix it.
 
 With this git widget, if a merge conflict occurs, the user can click on the "Click here to fix" button to be directed to a new page. Once there, they can directly edit the lines from the files in which the merge conflicts occurred. That page will look something like this:
