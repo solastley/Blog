@@ -6,7 +6,7 @@ Featured-article-1-url: kirby-cms-git-widget
 
 ----
 
-Featured-article-2-url: bs4-scraper
+Featured-article-2-url: internship-2016
 
 ----
 
