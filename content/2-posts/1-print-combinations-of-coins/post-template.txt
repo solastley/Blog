@@ -26,7 +26,7 @@ Before doing this myself, I searched all over the place for a straightforward, r
 ##The Problem
 Given some array of coin values (e.g. quarters, dimes, and nickels), print out all possible combinations of these coins that sum to some variable x. It is assumed that you have an infinite amount of each type of coin available. So, for example, given an infinite supply of quarters and dimes, there are two ways to make 60 cents  - 2 quarters and 1 dime, and 6 dimes.
 
-This problem is similar to the knapsack problem, and it has been pretty thoroughly researched. It is NP-complete, so the runtime is exponential. Note that you can easily find the maximum number of ways that the total amount can be reached in O(m + n) time using dynamic programming, where m is the number of coins you are given, and n is the desired amount. This problem is more difficult, however. Below is my recursive solution:
+This problem is similar to the knapsack problem, and it has been pretty thoroughly researched. It is NP-complete, so the runtime is exponential. Note that you can easily find the maximum number of ways that the total amount can be reached in O(m + n) time using dynamic programming, where m is the number of coins you are given, and n is the desired amount. This problem is more difficult, however. Below is my recursive solution, I highly recommend copy and pasting this code into your favorite text editor so that you can see the syntax highlighting and more easily distinguish the comments I made:
 
 ```
 import java.util.*;
