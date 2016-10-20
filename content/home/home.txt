@@ -2,11 +2,11 @@ Title: Home
 
 ----
 
-Featured-article-1-url: kirby-cms-git-widget
+Featured-article-1-url: print-combinations-of-coins
 
 ----
 
-Featured-article-2-url: internship-2016
+Featured-article-2-url: kirby-cms-git-widget
 
 ----
 
