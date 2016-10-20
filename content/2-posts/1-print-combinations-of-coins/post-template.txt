@@ -72,7 +72,6 @@ public class AllCoins {
                         curr.put(names.get(coinAmount), i);
                         findCoins(left - coinAmount * i, index + 1, coins, names, curr);
                     }
-
                     // reset the current coin amount to zero before recursing
                     curr.put(names.get(coinAmount), 0);
                 }
@@ -83,13 +82,7 @@ public class AllCoins {
             }
             // we've reached our goal, print out the current coin amounts
             else {
-                Iterator<String> iter = curr.keySet().iterator();
-                while (iter.hasNext()) {
-                    String denom = iter.next();
-                    System.out.print(curr.get(denom) + " " + denom + " ");
-                }
-                System.out.println();
-                return;
+                printCurr(curr);
             }
         }
         // last type of coin
@@ -103,30 +96,27 @@ public class AllCoins {
                     if (left % coinAmount == 0) {
                         // add last coin amount and print current values out
                         curr.put(names.get(coinAmount), left / coinAmount);
-                        Iterator<String> iter = curr.keySet().iterator();
-                        while (iter.hasNext()) {
-                            String denom = iter.next();
-                            System.out.print(curr.get(denom) + " " + denom + " ");
-                        }
-                        System.out.println();
+                        printCurr(curr);
 
                         // reset this coin amount to zero before recursing
                         curr.put(names.get(coinAmount), 0);
-                        return;
                     }
                 }
             }
             // we've reached our goal, print out the current coin amounts
             else {
-                Iterator<String> iter = curr.keySet().iterator();
-                while (iter.hasNext()) {
-                    String denom = iter.next();
-                    System.out.print(curr.get(denom) + " " + denom + " ");
-                }
-                System.out.println();
-                return;
+                printCurr(curr);
             }
         }
+    }
+
+    private static void printCurr(Map<String, Integer> curr) {
+        Iterator<String> iter = curr.keySet().iterator();
+        while (iter.hasNext()) {
+            String denom = iter.next();
+            System.out.print(curr.get(denom) + " " + denom + " ");
+        }
+        System.out.println();
     }
 }
 ```
