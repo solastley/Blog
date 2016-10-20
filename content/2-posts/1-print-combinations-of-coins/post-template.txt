@@ -121,4 +121,17 @@ public class AllCoins {
 }
 ```
 
+When run, the output of the above program is the following:
+
+10 nickel(s) 0 quarter(s) 0 dime(s)
+8 nickel(s) 0 quarter(s) 1 dime(s)
+6 nickel(s) 0 quarter(s) 2 dime(s)
+4 nickel(s) 0 quarter(s) 3 dime(s)
+2 nickel(s) 0 quarter(s) 4 dime(s)
+0 nickel(s) 0 quarter(s) 5 dime(s)
+5 nickel(s) 1 quarter(s) 0 dime(s)
+3 nickel(s) 1 quarter(s) 1 dime(s)
+1 nickel(s) 1 quarter(s) 2 dime(s)
+0 nickel(s) 2 quarter(s) 0 dime(s)
+
 Any questions? Feel free to ask in the comments below and I'll be quick to get back to you.
