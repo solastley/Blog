@@ -2,20 +2,104 @@ Title: Print All Combinations of Coins That Sum to an Amount
 
 ----
 
-Date: today
+Date: 2016-10-20
 
 ----
 
-Author: 
+Author: Solomon Astley
 
 ----
 
-Tags: 
+Tags: algorithms,recursion
 
 ----
 
-Summary: 
+Summary: I wrote an algorithm to print all possible combinations of coins that sum to a given total amount.
 
 ----
 
 Text: 
+
+##Introduction
+Before doing this myself, I searched all over the place for a straightforward, readable solution to this problem online. After a short while (I have a low tolerance for these types of things), I just came up with my own algorithm.
+
+##The Problem
+Given some array of coin values (e.g. quarters, dimes, and nickels), print out all possible combinations of these coins that sum to some variable x. It is assumed that you have an infinite amount of each type of coin available. So, for example, given an infinite supply of quarters and dimes, there are two ways to make 60 cents  - 2 quarters and 1 dime, and 6 dimes.
+
+This problem is similar to the knapsack problem, and it has been pretty thoroughly researched. It is NP-complete, so the runtime is exponential. Note that you can easily find the maximum number of ways that the total amount can be reached in O(m + n) time using dynamic programming, where m is the number of coins you are given, and n is the desired amount. This problem is more difficult, however. Below is my recursive solution:
+
+```
+import java.util.*;
+
+public class AllCoins {
+    public static void main(String [] args) {
+        int goal = 30;
+        int [] coins = new int [] {25, 10, 5};
+        Map<Integer, String> names = new HashMap<Integer, String>();
+        names.put(25, "quarter(s)");
+        names.put(10, "dime(s)");
+        names.put(5, "nickel(s)");
+
+        Map<String, Integer> curr = new HashMap<String, Integer>();
+        curr.put(names.get(25), 0);
+        curr.put(names.get(10), 0);
+        curr.put(names.get(5), 0);
+
+        findCoins(goal, 0, coins, names, curr);
+    }
+
+    private static void findCoins(int left, int index, int [] coins, Map<Integer, String> names, Map<String, Integer> curr) {
+        if (index < coins.length - 1) {
+            if (left > 0) {
+                int coinAmount = coins[index];
+                if (coinAmount <= left) {
+                    for (int i = 0; i <= left / coinAmount; i++) {
+                        curr.put(names.get(coinAmount), i);
+                        findCoins(left - coinAmount * i, index + 1, coins, names, curr);
+                        curr.put(names.get(coinAmount), 0);
+                    }
+                }
+                else {
+                    findCoins(left, index + 1, coins, names, curr);
+                }
+            }
+            else {
+                Iterator<String> iter = curr.keySet().iterator();
+                while (iter.hasNext()) {
+                    String denom = iter.next();
+                    System.out.print(curr.get(denom) + " " + denom + " ");
+                }
+                System.out.println();
+                return;
+            }
+        }
+        else {
+            if (left > 0) {
+                int coinAmount = coins[index];
+                if (coinAmount <= left) {
+                    if (left % coinAmount == 0) {
+                        curr.put(names.get(coinAmount), left / coinAmount);
+                        Iterator<String> iter = curr.keySet().iterator();
+                        while (iter.hasNext()) {
+                            String denom = iter.next();
+                            System.out.print(curr.get(denom) + " " + denom + " ");
+                        }
+                        System.out.println();
+                        curr.put(names.get(coinAmount), 0);
+                        return;
+                    }
+                }
+            }
+            else {
+                Iterator<String> iter = curr.keySet().iterator();
+                while (iter.hasNext()) {
+                    String denom = iter.next();
+                    System.out.print(curr.get(denom) + " " + denom + " ");
+                }
+                System.out.println();
+                return;
+            }
+        }
+    }
+}
+```

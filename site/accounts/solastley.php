@@ -7,8 +7,8 @@ password: >
 language: en
 role: admin
 history:
+  - posts/print-combinations-of-coins
   - home
   - posts/internship-2016-part-2
   - posts/kirby-cms-git-widget
   - posts/kirby-blog
-  - posts/internship-2016
