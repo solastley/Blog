@@ -1,4 +1,4 @@
-Title: Print All Combinations of Coins That Sum to an Amount
+Title: Print All Combinations of Coins That Sum to an Amount - Java Solution
 
 ----
 
