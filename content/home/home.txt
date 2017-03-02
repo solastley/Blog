@@ -2,11 +2,11 @@ Title: Home
 
 ----
 
-Featured-article-1-url: print-combinations-of-coins
+Featured-article-1-url: magic-mirror
 
 ----
 
-Featured-article-2-url: kirby-cms-git-widget
+Featured-article-2-url: kirby-blog
 
 ----
 
