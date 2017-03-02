@@ -62,7 +62,7 @@ Using the ratcheting band clamp that I recommended earlier, I clamped the pieces
 I also recommend placing some bread nails around the perimeter of the mirror to prevent it from moving around. Be very careful with this step, however, because you are hammering very close to the fragile mirror.
 
 After cutting some pieces of trim to the proper size, making 45 degree angle cuts at the edges, and some sanding, I attached the trim to the supportive backing. The thick part of the trim should be glued/nailed to the backing, and the thin part of the mirror should rest on top of the edge of the mirror. I attached the trim by pre-drilling some small holes with a tiny drill bit, then gluing it to the backing and hammering bread nails into the pre-drilled holes. This was sufficient to hold the trim in place. Here is an image of this process:
-(image: basic_trim.jpg width: 350 height: 600)
+(image: basic_trim.jpg width: 550 height: 400)
 
 After all four pieces of trim were attached, it looked like this:
 (image: complete_trim.jpg width: 500 height: 400)
