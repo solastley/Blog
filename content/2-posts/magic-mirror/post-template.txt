@@ -72,7 +72,7 @@ In order to hang the mirror, I attached some steel wire to the back using a pair
 Unless you're a master craftsman, your measurements and forty-five degree cuts will likely be slightly off like mine were. After gluing/nailing the trim in place, there were some gaps between the pieces that I filled in with some wood filler.
 
 I did some wire management in the back of the mirror to hold everything together. How you do this is up to you, but here is an image of mine:
-(image: wiring.jpg width: 600 height: 350)
+(image: wiring.jpg width: 500 height: 350)
 
 ##Conclusion
 That's all there is to it. If you have any questions about this project, feel free to contact me or comment below. Happy building!
