@@ -58,21 +58,21 @@ To make the back, I used some wooden two-by-fours. I cut four pieces, just large
 (image:  basic_frame.jpg width: 350 height: 600)
 
 Using the ratcheting band clamp that I recommended earlier, I clamped the pieces together while they dried. I then attached some small, circular, felt stickers to the back of the mirror to fill in the gap between the base of the frame and the back of the trim. Here is an image of that:
-(image: basic_mirror.jpg width: 100 height: 200)
+(image: basic_mirror.jpg width: 350 height: 600)
 I also recommend placing some bread nails around the perimeter of the mirror to prevent it from moving around. Be very careful with this step, however, because you are hammering very close to the fragile mirror.
 
 After cutting some pieces of trim to the proper size, making 45 degree angle cuts at the edges, and some sanding, I attached the trim to the supportive backing. The thick part of the trim should be glued/nailed to the backing, and the thin part of the mirror should rest on top of the edge of the mirror. I attached the trim by pre-drilling some small holes with a tiny drill bit, then gluing it to the backing and hammering bread nails into the pre-drilled holes. This was sufficient to hold the trim in place. Here is an image of this process:
-(image: basic_trim.jpg width: 100 height: 200)
+(image: basic_trim.jpg width: 350 height: 600)
 
 After all four pieces of trim were attached, it looked like this:
-(image: complete_trim.jpg width: 100 height: 200)
+(image: complete_trim.jpg width: 350 height: 600)
 
 In order to hang the mirror, I attached some steel wire to the back using a pair of eye hooks. This was fairly straightforward - simply screw the eye hooks in place and wrap the wire around them. Here is an image of that:
-(image: eyehooks.jpg width: 100 height: 200)
+(image: eyehooks.jpg width: 350 height: 600)
 Unless you're a master craftsman, your measurements and forty-five degree cuts will likely be slightly off like mine were. After gluing/nailing the trim in place, there were some gaps between the pieces that I filled in with some wood filler.
 
 I did some wire management in the back of the mirror to hold everything together. How you do this is up to you, but here is an image of mine:
-(image: wiring.jpg width: 100 height: 200)
+(image: wiring.jpg width: 350 height: 600)
 
 ##Conclusion
 That's all there is to it. If you have any questions about this project, feel free to contact me or comment below. Happy building!
