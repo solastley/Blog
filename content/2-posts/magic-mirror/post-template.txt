@@ -65,7 +65,7 @@ After cutting some pieces of trim to the proper size, making 45 degree angle cut
 (image: basic_trim.jpg width: 350 height: 600)
 
 After all four pieces of trim were attached, it looked like this:
-(image: complete_trim.jpg width: 350 height: 600)
+(image: complete_trim.jpg width: 400 height: 550)
 
 In order to hang the mirror, I attached some steel wire to the back using a pair of eye hooks. This was fairly straightforward - simply screw the eye hooks in place and wrap the wire around them. Here is an image of that:
 (image: eyehooks.jpg width: 350 height: 600)
