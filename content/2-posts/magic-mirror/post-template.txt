@@ -68,7 +68,7 @@ After all four pieces of trim were attached, it looked like this:
 (image: complete_trim.jpg width: 500 height: 400)
 
 In order to hang the mirror, I attached some steel wire to the back using a pair of eye hooks. This was fairly straightforward - simply screw the eye hooks in place and wrap the wire around them. Here is an image of that:
-(image: eyehooks.jpg width: 350 height: 600)
+(image: eyehooks.jpg width: 550 height: 400)
 Unless you're a master craftsman, your measurements and forty-five degree cuts will likely be slightly off like mine were. After gluing/nailing the trim in place, there were some gaps between the pieces that I filled in with some wood filler.
 
 I did some wire management in the back of the mirror to hold everything together. How you do this is up to you, but here is an image of mine:
