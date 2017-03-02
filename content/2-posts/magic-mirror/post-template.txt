@@ -22,7 +22,7 @@ Text:
 
 ##Overview
 You may have seen this project floating around the Internet before, and maybe even some guides for how to make one. A Magic Mirror is basically an LED monitor behind a two-way mirror that displays some text or images. It sounds pretty trivial, but the end result is actually really cool. Check it out:
-(image: complete_mirror.jpg width: 100 height: 200)
+(image: complete_mirror.jpg width: 250 height: 500)
 
 As long as it's connected to the Internet, you can display just about anything on the mirror that you want (within reason). With a little Internet-of-Things magic, you can even incorporate sensors and buttons for interactive abilities. This blog post will largely be a revision of (link: http://blog.dylanjpierce.com/raspberrypi/magicmirror/tutorial/2015/12/27/build-a-magic-mirror.html text: this popup: yes) tutorial on how to create a magic mirror. I used Pierce's guide while creating my mirror, but I noticed that some of his code is outdated and it's much easier to use the MagicMirror open source software for this project.
 
