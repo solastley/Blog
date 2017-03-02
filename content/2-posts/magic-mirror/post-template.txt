@@ -55,7 +55,7 @@ As open source software, MagicMirror is always being updated and worked on. The 
 Disclaimer: I am a software developer, not a handyman. For the construction of the frame, I did the best I could, but I'm sure I ignored some best practices along the way. I'll outline the basic steps I took, but feel very free to modify my approach to your liking. There are two real pieces of the frame: the supportive backing that hides the hardware behind the mirror, and the actual frame that sits around the edges of the mirror and is attached to the back boards.
 
 To make the back, I used some wooden two-by-fours. I cut four pieces, just large enough to fit snugly around the outside of the monitor. Using a nail gun and some wood glue, I attached these four pieces together, using the monitor as a guide for where to make the attachments. After this was done, it looked like this:
-(image:  basic_frame.jpg width: 350 height: 500)
+(image:  basic_frame.jpg width: 350 height: 600)
 
 Using the ratcheting band clamp that I recommended earlier, I clamped the pieces together while they dried. I then attached some small, circular, felt stickers to the back of the mirror to fill in the gap between the base of the frame and the back of the trim. Here is an image of that:
 (image: basic_mirror.jpg width: 100 height: 200)
