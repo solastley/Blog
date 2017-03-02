@@ -7,8 +7,8 @@ password: >
 language: en
 role: admin
 history:
+  - posts/magic-mirror
   - home
   - posts/print-combinations-of-coins
   - posts/internship-2016-part-2
   - posts/kirby-cms-git-widget
-  - posts/kirby-blog
