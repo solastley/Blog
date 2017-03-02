@@ -6,7 +6,7 @@ Featured-article-1-url: magic-mirror
 
 ----
 
-Featured-article-2-url: kirby-git-widget
+Featured-article-2-url: kirby-cms-git-widget
 
 ----
 
