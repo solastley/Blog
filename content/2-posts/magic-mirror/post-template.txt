@@ -29,16 +29,16 @@ As long as it's connected to the Internet, you can display just about anything o
 ##The Hardware
 NOTE: I've made a (link: http://a.co/5c9WLvT text: list on Amazon popup: yes) of some of the items that you will/may need for this project, primarily with the exception of the two-way mirror and woodworking supplies. You can find a link to a website for the two-way mirror below.
 
-###The Raspberry Pi
+###Raspberry Pi
 In order to run the MagicMirror software, you'll need a Raspberry Pi. I recommend using the Raspberry Pi 3. I ordered (link: https://www.amazon.com/CanaKit-Raspberry-Clear-Power-Supply/dp/B01C6EQNNK/ref=sr_1_3?s=pc&ie=UTF8&qid=1488478584&sr=1-3&keywords=raspberry+pi text: this popup: yes) product from Amazon, which comes with a convenient case for the Pi, a power cable,  and two heat sinks. Additionally, you'll need a (link: https://www.amazon.com/Raspberry-Pi-Preloaded-NOOBS-Card/dp/B00ENPQ1GK/ref=sr_1_6?s=pc&ie=UTF8&qid=1488478701&sr=1-6&keywords=raspberry+pi+sd+card text: micro-SD card pre-loaded with NOOBS popup: yes), an automated operating system installer which installs Raspbian, the most popular operating system for the Raspberry Pi. You'll also need a short (link: https://www.amazon.com/Cablelera-Speed-Ethernet-Black-ZC5599MM-03/dp/B011ESUDKI/ref=sr_1_1?s=pc&ie=UTF8&qid=1488478959&sr=1-1&keywords=hdmi+cable&refinements=p_n_feature_keywords_five_browse-bin%3A7800924011 text: HDMI cable popup: yes) to connect the Pi to your monitor.
 
-###The Display
+###Display
 Speaking of the monitor, you'll also need one of those. The choice of monitor is really up to you, but I recommend an LED monitor because that provides the best quality light to shine through the mirror. Something else to keep in mind when choosing your monitor is the location of the power and HDMI ports. On many monitors, these ports are located on the side, which will eventually be covered up by the wooden frame of your mirror. This is obviously undesirable. I ended up using the monitor recommended by Pierce, a (link: https://www.amazon.com/BenQ-GL2760H-27-inch-LED-lit-Monitor/dp/B00IZBIMLK text: BenQ GL2760H 27 inch monitor popup: yes). An optional step (though I recommend doing it) is to remove the plastic bezel from your monitor to make it slimmer and easier to work with. (link: https://www.youtube.com/watch?v=XV5EiVHKWR0 text: Here popup: yes) is a great video tutorial on how to accomplish this.
 
 ###Some Extra Electronics
 As the monitor and Raspberry Pi both have separate power cables, you may want to order a (link: https://www.amazon.com/Cable-Leader-Power-Splitter-inches/dp/B01B8OG51E/ref=sr_1_3?s=pc&ie=UTF8&qid=1488479573&sr=1-3&keywords=power+splitter text: power splitter popup: yes). As your magic mirror hangs on the wall and needs plugged into an outlet, I also recommend getting an (link: https://www.amazon.com/StarTech-com-Power-Extension-Cord-5-15R/dp/B002VY53QE/ref=sr_1_4?s=pc&ie=UTF8&qid=1488479653&sr=1-4&keywords=extension+cord text: extension cord popup: yes).
 
-###The Two-Way Mirror
+###Two-Way Mirror
 The mirror is a sheet of two-way acrylic plastic. You can read up on how two-way mirrors work (link: https://en.wikipedia.org/wiki/One-way_mirror text: here popup: yes), but that's outside the scope of this tutorial. All you need to know is that our two-way mirror will act like glass where light shines through and like a mirror where light does not shine through. There are many companies that sell custom acrylic two-way sheets online, but again I used the site recommended by Pierce. You can find that (link: http://www.tapplastics.com/product/plastics/cut_to_size_plastic/two_way_mirrored_acrylic/558 text: here popup: yes). Please note that you should try to order the mirror as close to the size of your monitor as possible because it's a pretty big pain (though not impossible) to cut it.
 
 ###Woodworking Supplies
