@@ -1,0 +1,21 @@
+Title: How to Configure your Elastic Beanstalk Environment to Conditionally Force HTTP Traffic to HTTPS by Using AWS Environment Variables
+
+----
+
+Date: today
+
+----
+
+Author: 
+
+----
+
+Tags: 
+
+----
+
+Summary: 
+
+----
+
+Text: 
